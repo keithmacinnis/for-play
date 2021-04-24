@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		858FADB6292C9FE933AFB6E9 /* Pods_For_Play.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DC0E857475A4E1658590D0 /* Pods_For_Play.framework */; };
+		8015B9FB91D8240CDA4EF849 /* Pods_For_Play.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F648EF8CF242857D111231F /* Pods_For_Play.framework */; };
 		E30E7E9D2628BBF00043C16B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7E9C2628BBF00043C16B /* LoginView.swift */; };
 		E30E7EB02628C5480043C16B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EAF2628C5480043C16B /* User.swift */; };
+		E30E7EBE26308C340043C16B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EBD26308C340043C16B /* UserView.swift */; };
+		E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */; };
 		E383889B26280C6B007BCCE6 /* For_PlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* For_PlayApp.swift */; };
 		E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889C26280C6B007BCCE6 /* ContentView.swift */; };
 		E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E383889E26280C6E007BCCE6 /* Assets.xcassets */; };
@@ -46,15 +48,21 @@
 		E38388F3262812E4007BCCE6 /* PublicListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38388F2262812E4007BCCE6 /* PublicListRow.swift */; };
 		E38388F6262812F9007BCCE6 /* PublicListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38388F5262812F9007BCCE6 /* PublicListDetail.swift */; };
 		E38388F926281323007BCCE6 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38388F826281323007BCCE6 /* Activity.swift */; };
+		E38A2F692630ABD1007D65C4 /* PostActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A2F682630ABD1007D65C4 /* PostActivityView.swift */; };
 		E3BCF941262822A400768BEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3BCF940262822A400768BEA /* GoogleService-Info.plist */; };
+		E3D2628326311A0300ADCBE5 /* ActivtiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D2628226311A0300ADCBE5 /* ActivtiesViewModel.swift */; };
+		E3D26286263120A500ADCBE5 /* ActivtiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26285263120A500ADCBE5 /* ActivtiesList.swift */; };
+		E3D2628D2631210C00ADCBE5 /* ActivityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */; };
+		E3D262902631212F00ADCBE5 /* ActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D2628F2631212F00ADCBE5 /* ActivityDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05DC0E857475A4E1658590D0 /* Pods_For_Play.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_For_Play.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		253F43DEFBBEDE65E463ECE8 /* Pods-For Play.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-For Play.release.xcconfig"; path = "Target Support Files/Pods-For Play/Pods-For Play.release.xcconfig"; sourceTree = "<group>"; };
-		DCAAEA4E7521B7D42705EB2C /* Pods-For Play.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-For Play.debug.xcconfig"; path = "Target Support Files/Pods-For Play/Pods-For Play.debug.xcconfig"; sourceTree = "<group>"; };
+		2F648EF8CF242857D111231F /* Pods_For_Play.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_For_Play.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75C40B6FA7C24EF5BF7A89E3 /* Pods-For Play.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-For Play.release.xcconfig"; path = "Target Support Files/Pods-For Play/Pods-For Play.release.xcconfig"; sourceTree = "<group>"; };
 		E30E7E9C2628BBF00043C16B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E30E7EAF2628C5480043C16B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E30E7EBD26308C340043C16B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserView.swift; path = "For Play/Views/UserView.swift"; sourceTree = SOURCE_ROOT; };
+		E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinUnlistedView.swift; sourceTree = "<group>"; };
 		E383889726280C6B007BCCE6 /* For Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "For Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E383889A26280C6B007BCCE6 /* For_PlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = For_PlayApp.swift; sourceTree = "<group>"; };
 		E383889C26280C6B007BCCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,7 +101,13 @@
 		E38388F2262812E4007BCCE6 /* PublicListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicListRow.swift; sourceTree = "<group>"; };
 		E38388F5262812F9007BCCE6 /* PublicListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicListDetail.swift; sourceTree = "<group>"; };
 		E38388F826281323007BCCE6 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		E38A2F682630ABD1007D65C4 /* PostActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActivityView.swift; sourceTree = "<group>"; };
 		E3BCF940262822A400768BEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3D2628226311A0300ADCBE5 /* ActivtiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivtiesViewModel.swift; sourceTree = "<group>"; };
+		E3D26285263120A500ADCBE5 /* ActivtiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivtiesList.swift; sourceTree = "<group>"; };
+		E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRow.swift; sourceTree = "<group>"; };
+		E3D2628F2631212F00ADCBE5 /* ActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetail.swift; sourceTree = "<group>"; };
+		EE6CF9C636CAF505A1F3197A /* Pods-For Play.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-For Play.debug.xcconfig"; path = "Target Support Files/Pods-For Play/Pods-For Play.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				858FADB6292C9FE933AFB6E9 /* Pods_For_Play.framework in Frameworks */,
+				8015B9FB91D8240CDA4EF849 /* Pods_For_Play.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,26 +125,10 @@
 		180EC7E82F9116B69FDBED4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DCAAEA4E7521B7D42705EB2C /* Pods-For Play.debug.xcconfig */,
-				253F43DEFBBEDE65E463ECE8 /* Pods-For Play.release.xcconfig */,
+				EE6CF9C636CAF505A1F3197A /* Pods-For Play.debug.xcconfig */,
+				75C40B6FA7C24EF5BF7A89E3 /* Pods-For Play.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		4F6688C0E0B511575ADD27CF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				05DC0E857475A4E1658590D0 /* Pods_For_Play.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E30E7E9B2628BBDA0043C16B /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E30E7E9C2628BBF00043C16B /* LoginView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		E383888E26280C6B007BCCE6 = {
@@ -139,7 +137,7 @@
 				E383889926280C6B007BCCE6 /* For Play */,
 				E383889826280C6B007BCCE6 /* Products */,
 				180EC7E82F9116B69FDBED4E /* Pods */,
-				4F6688C0E0B511575ADD27CF /* Frameworks */,
+				E51823D3AF1D718AD63F95D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,7 +176,10 @@
 		E38388AB26280D5D007BCCE6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E30E7E9B2628BBDA0043C16B /* Login */,
+				E30E7E9C2628BBF00043C16B /* LoginView.swift */,
+				E38A2F682630ABD1007D65C4 /* PostActivityView.swift */,
+				E30E7EBD26308C340043C16B /* UserView.swift */,
+				E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */,
 				E38388ED2628120E007BCCE6 /* PublicList */,
 				E38388AC26280D5D007BCCE6 /* Hikes */,
 				E38388B126280D5D007BCCE6 /* Landmarks */,
@@ -205,6 +206,9 @@
 			isa = PBXGroup;
 			children = (
 				E38388B226280D5D007BCCE6 /* LandmarkList.swift */,
+				E3D26285263120A500ADCBE5 /* ActivtiesList.swift */,
+				E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */,
+				E3D2628F2631212F00ADCBE5 /* ActivityDetail.swift */,
 				E38388B326280D5D007BCCE6 /* LandmarkDetail.swift */,
 				E38388B426280D5D007BCCE6 /* LandmarkRow.swift */,
 			);
@@ -270,8 +274,9 @@
 				E38388CD26280D5D007BCCE6 /* Hike.swift */,
 				E38388CE26280D5D007BCCE6 /* ModelData.swift */,
 				E38388CF26280D5D007BCCE6 /* Landmark.swift */,
-				E38388F826281323007BCCE6 /* Activity.swift */,
 				E30E7EAF2628C5480043C16B /* User.swift */,
+				E38388F826281323007BCCE6 /* Activity.swift */,
+				E3D2628226311A0300ADCBE5 /* ActivtiesViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +291,14 @@
 			path = PublicList;
 			sourceTree = "<group>";
 		};
+		E51823D3AF1D718AD63F95D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F648EF8CF242857D111231F /* Pods_For_Play.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,11 +306,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E38388A626280C6E007BCCE6 /* Build configuration list for PBXNativeTarget "For Play" */;
 			buildPhases = (
-				CD81646AF03D18B9599532BC /* [CP] Check Pods Manifest.lock */,
+				9F7D08BBE2FA1A80C973F795 /* [CP] Check Pods Manifest.lock */,
 				E383889326280C6B007BCCE6 /* Sources */,
 				E383889426280C6B007BCCE6 /* Frameworks */,
 				E383889526280C6B007BCCE6 /* Resources */,
-				52696643C3FB7600EB15828D /* [CP] Embed Pods Frameworks */,
+				847CCE9753BE0BC5CE49E31E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,7 +369,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		52696643C3FB7600EB15828D /* [CP] Embed Pods Frameworks */ = {
+		847CCE9753BE0BC5CE49E31E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,7 +386,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-For Play/Pods-For Play-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD81646AF03D18B9599532BC /* [CP] Check Pods Manifest.lock */ = {
+		9F7D08BBE2FA1A80C973F795 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,6 +423,7 @@
 				E38388E926280D5E007BCCE6 /* Hike.swift in Sources */,
 				E38388D326280D5E007BCCE6 /* HikeView.swift in Sources */,
 				E38388EB26280D5E007BCCE6 /* Landmark.swift in Sources */,
+				E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */,
 				E38388E126280D5E007BCCE6 /* RotatedBadgeSymbol.swift in Sources */,
 				E30E7E9D2628BBF00043C16B /* LoginView.swift in Sources */,
 				E38388E326280D5E007BCCE6 /* BadgeSymbol.swift in Sources */,
@@ -423,17 +437,23 @@
 				E38388D126280D5D007BCCE6 /* HikeGraph.swift in Sources */,
 				E38388D426280D5E007BCCE6 /* LandmarkList.swift in Sources */,
 				E38388F3262812E4007BCCE6 /* PublicListRow.swift in Sources */,
+				E3D262902631212F00ADCBE5 /* ActivityDetail.swift in Sources */,
 				E38388D526280D5E007BCCE6 /* LandmarkDetail.swift in Sources */,
 				E38388DC26280D5E007BCCE6 /* CategoryRow.swift in Sources */,
 				E383889B26280C6B007BCCE6 /* For_PlayApp.swift in Sources */,
+				E3D2628D2631210C00ADCBE5 /* ActivityRow.swift in Sources */,
 				E38388F926281323007BCCE6 /* Activity.swift in Sources */,
 				E38388E826280D5E007BCCE6 /* Profile.swift in Sources */,
+				E3D26286263120A500ADCBE5 /* ActivtiesList.swift in Sources */,
 				E38388DB26280D5E007BCCE6 /* CategoryHome.swift in Sources */,
+				E30E7EBE26308C340043C16B /* UserView.swift in Sources */,
+				E3D2628326311A0300ADCBE5 /* ActivtiesViewModel.swift in Sources */,
 				E38388DA26280D5E007BCCE6 /* CategoryItem.swift in Sources */,
 				E38388E426280D5E007BCCE6 /* BadgeBackground.swift in Sources */,
 				E38388D826280D5E007BCCE6 /* ProfileEditor.swift in Sources */,
 				E38388D026280D5D007BCCE6 /* GraphCapsule.swift in Sources */,
 				E38388DE26280D5E007BCCE6 /* CircleImage.swift in Sources */,
+				E38A2F692630ABD1007D65C4 /* PostActivityView.swift in Sources */,
 				E38388D226280D5D007BCCE6 /* HikeDetail.swift in Sources */,
 				E38388D626280D5E007BCCE6 /* LandmarkRow.swift in Sources */,
 			);
@@ -560,7 +580,7 @@
 		};
 		E38388A726280C6E007BCCE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCAAEA4E7521B7D42705EB2C /* Pods-For Play.debug.xcconfig */;
+			baseConfigurationReference = EE6CF9C636CAF505A1F3197A /* Pods-For Play.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -583,7 +603,7 @@
 		};
 		E38388A826280C6E007BCCE6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 253F43DEFBBEDE65E463ECE8 /* Pods-For Play.release.xcconfig */;
+			baseConfigurationReference = 75C40B6FA7C24EF5BF7A89E3 /* Pods-For Play.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

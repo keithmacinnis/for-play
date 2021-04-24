@@ -9,7 +9,17 @@
 import SwiftUI
 import FirebaseAuth
 
-    
+let gradient = AngularGradient(
+    gradient: Gradient(colors: [.green, .blue]),
+    center: .center,
+    startAngle: .degrees(0),
+    endAngle: .degrees(360))
+
+enum LoginViewState {
+    case showContent
+    case showLogin
+    case showSignup
+}
 
 struct ContentView: View {
     
@@ -26,20 +36,20 @@ struct ContentView: View {
         switch user.loginState {
             case .showContent:
                 TabView(selection: $selection) {
-                    CategoryHome()
+                    PostActivityView()
                         .tabItem {
-                            Label("Featured", systemImage: "star")
+                            Label("Post", systemImage: "paperplane")
                         }
                         .tag(Tab.featured)
 
-                    LandmarkList()
+                    UserView()
                         .tabItem {
-                            Label("List", systemImage: "list.bullet")
+                            Label("User", systemImage: "person")
                         }
                         .tag(Tab.list)
-                    LandmarkList()
+                    ActivtiesList()
                         .tabItem {
-                            Label("Public", systemImage: "list.bullet")
+                            Label("Public", systemImage: "list.bullet.rectangle")
                         }
                         .tag(Tab.publicList)
                 }
@@ -57,3 +67,5 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(ModelData())
     }
 }
+
+

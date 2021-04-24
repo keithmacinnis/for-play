@@ -9,11 +9,6 @@ import Combine
 import Foundation
 import FirebaseAuth
 
-enum LoginViewState {
-    case showContent
-    case showLogin
-    case showSignup
-}
 
 final class User: ObservableObject {
     
@@ -25,11 +20,12 @@ final class User: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     
     init() {
+        print("User.swift init called")
       handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
             } else {
-                print("login error from user.swift")
+                print("User is nil (from user.swift)")
                 self.loginState = .showLogin
             }
         }
@@ -52,6 +48,15 @@ final class User: ObservableObject {
             }
         }
     }
+    func logout() {
+    let firebaseAuth = Auth.auth()
+       do {
+         try firebaseAuth.signOut()
+       } catch let signOutError as NSError {
+         print ("Error signing out: %@", signOutError)
+       }
+    }
+     
         
 }
 

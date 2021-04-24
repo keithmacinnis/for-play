@@ -25,31 +25,6 @@ final class ModelData: ObservableObject {
             by: { $0.category.rawValue }
         )
     }
-//    func signUp(
-//          email: String,
-//          password: String,
-//          handler: @escaping AuthDataResultCallback
-//          ) {
-//          Auth.auth().createUser(withEmail: email, password: password, completion: handler)
-//      }
-//
-//      func signIn(
-//          email: String,
-//          password: String,
-//          handler: @escaping AuthDataResultCallback
-//          ) {
-//          Auth.auth().signIn(withEmail: email, password: password, completion: handler)
-//      }
-//
-//      func signOut () -> Bool {
-//          do {
-//              try Auth.auth().signOut()
-//              self.session = nil
-//              return true
-//          } catch {
-//              return false
-//          }
-//      }
 }
 
 

@@ -14,6 +14,13 @@ struct LoginView: View {
     @State private var password = ""
     @State private var newUserSignup = false
     @State private var showingAlert = false
+        
+    private let gradient = AngularGradient(
+        gradient: Gradient(colors: [.green, .blue]),
+        center: .center,
+        startAngle: .degrees(0),
+        endAngle: .degrees(360))
+
     
     var body: some View {
         if (!newUserSignup) {
@@ -32,22 +39,25 @@ struct LoginView: View {
                 .foregroundColor(Color.yellow)
                 .frame(width: 250, height: 250)
                 .clipShape(Circle())
-                .overlay(Circle().stroke(Color.gray, lineWidth: 4))
+                .overlay(Circle().stroke(gradient, lineWidth: 4))
                 .shadow(radius: 10.0, x: 20, y: 10)
                 .padding(.bottom, 50)
             
             VStack(alignment: .leading, spacing: 15) {
                 TextField("Email", text: self.$email)
+                    .accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     .padding()
-                    .background(Color.themeTextField)
+                //.background(Color.themeTextField)
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+                    .foregroundColor(.black)
                 
                 SecureField("Password", text: self.$password)
                     .padding()
-                    .background(Color.themeTextField)
+                  //.  .background(Color.themeTextField)
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+                    .foregroundColor(.black)
                 
             }.padding([.leading, .trailing], 50)
             Button(action: {User().login(email,password)}) {
@@ -163,11 +173,6 @@ struct LoginView: View {
 //    }
 }
 
-extension Color {
-    static var themeTextField: Color {
-        return Color(red: 220.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, opacity: 1.0)
-    }
-}
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
