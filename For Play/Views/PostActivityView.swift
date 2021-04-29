@@ -19,7 +19,7 @@ struct PostActivityView: View {
     @State private var eventTitle = ""
     @State private var eventPassword = ""
     @State private var eventActivity = ""
-    @State private var eventLocation = ""
+    @State private var eventLocation = "Location/GPS (Click the map's checkmark to set me)"
     @State private var hashTags = ""
     @State private var date = Date()
     @State private var isPrivate = false
@@ -88,12 +88,13 @@ struct PostActivityView: View {
                         .foregroundColor(.black)
                         .cornerRadius(25.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
-                    TextField("Location", text: self.$eventLocation)
-                        .padding()
-                        .background(Color.themeTextField)
-                        .foregroundColor(.black)
-                        .cornerRadius(25.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
+//                    TextField("Location", text: self.$eventLocation)
+//                        .frame(height: 48)
+//                        .padding()
+//                        .background(Color.themeTextField)
+//                        .foregroundColor(.black)
+//                        .cornerRadius(25.0)
+//                        .shadow(radius: 10.0, x: 20, y: 10)
                     ZStack{
                     //MapView(centerCoordinate: $centerCoordinate)
 //
@@ -130,14 +131,18 @@ struct PostActivityView: View {
                                             //self.mostRecentPlacemark = firstPlacemark
                                             print(firstPlacemark)
                                             var addressString : String = ""
+                                            if firstPlacemark.name != nil {
+                                                addressString = addressString + firstPlacemark.name! + ", "
+                                            }else {
+                                                if firstPlacemark.subThoroughfare != nil {
+                                                    addressString = addressString + firstPlacemark.subThoroughfare! + ", "
+                                                }
+                                                if firstPlacemark.thoroughfare != nil {
+                                                    addressString = addressString + firstPlacemark.thoroughfare! + ", "
+                                                }
+                                            }
                                             if firstPlacemark.subLocality != nil {
                                                 addressString = addressString + firstPlacemark.subLocality! + ", "
-                                            }
-                                            if firstPlacemark.subThoroughfare != nil {
-                                                addressString = addressString + firstPlacemark.thoroughfare! + ", "
-                                            }
-                                            if firstPlacemark.subThoroughfare != nil {
-                                                addressString = addressString + firstPlacemark.subThoroughfare! + ", "
                                             }
                                             if firstPlacemark.locality != nil {
                                                 addressString = addressString + firstPlacemark.locality! + ", "
@@ -152,9 +157,6 @@ struct PostActivityView: View {
                                                 addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
                                             }
                                             self.eventLocation = addressString
-                                            //self.eventLocation = "\(firstPlacemark.addressDictionary![1]), \(firstPlacemark.addressDictionary![2]), \(firstPlacemark.addressDictionary![3])"
-                                           // self.eventLocation = "\(firstPlacemark.subLocality!), \(firstPlacemark.subThoroughfare!) \(firstPlacemark.thoroughfare!)"
-                                            
                                         }
                                     }
                                 }) {Image(systemName: "checkmark.circle.fill")
@@ -201,7 +203,8 @@ struct PostActivityView: View {
                                 }
                             }}}
                     }
-                    TextField("#Hashtags", text: self.$hashTags)
+                    TextEditor(text: self.$eventLocation)
+                        .frame(height: 48)
                         .padding()
                         .background(Color.themeTextField)
                         .foregroundColor(.black)
@@ -223,6 +226,12 @@ struct PostActivityView: View {
                                 scrollView.scrollTo("longDescption", anchor: .center)
                             }
                         }
+                    TextField("#Hashtags", text: self.$hashTags)
+                        .padding()
+                        .background(Color.themeTextField)
+                        .foregroundColor(.black)
+                        .cornerRadius(25.0)
+                        .shadow(radius: 10.0, x: 20, y: 10)
                     
                     
                 }.padding([.leading, .trailing], 50)
