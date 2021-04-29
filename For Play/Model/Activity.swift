@@ -8,18 +8,19 @@
 import Foundation
 //import SwiftUI
 //import CoreLocation
-import Firebase
+//import Firebase
 
 struct Activity: Hashable, Codable, Identifiable {
     
     var id: String
     var title: String
-    var authorsUID: String = Auth.auth().currentUser?.uid ?? "error reading username"
+    var authorsUID: String
 
-    init( id: String, title: String){
-        self.id = id
-        self.title = title
-    }
+//    init( id: String, title: String){
+//        self.id = id
+//        self.title = title
+//        self.authorsUID = Auth.auth().currentUser?.uid ?? "error reading username"
+//    }
     init( id: String, title: String, authorUID: String){
         self.id = id
         self.title = title

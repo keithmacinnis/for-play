@@ -9,9 +9,14 @@ import Foundation
 import Firebase
 import Combine
 
-class ActivitiesViewModel: ObservableObject {
+final class ActivitiesViewModel: ObservableObject {
+    
     private var ref = Database.database().reference(withPath: "Activties")
     @Published var activities: [Activity] = []
+    
+    init() {
+        print("ActivitiesViewModel.swift init called")
+    }
     
     func getAutoUIDforActivities() -> String {
         return ref.childByAutoId().key!

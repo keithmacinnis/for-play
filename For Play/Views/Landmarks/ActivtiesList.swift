@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActivtiesList: View {
-    @ObservedObject private var viewModel = ActivitiesViewModel()
+    @EnvironmentObject var viewModel: ActivitiesViewModel
     @State private var zoomStepperValue = 2
     let zoomLevels: [String] = ["National","Provincial","Regional","Local"]
     

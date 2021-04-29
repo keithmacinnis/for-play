@@ -21,7 +21,6 @@ struct ActivityRow: View {
 }
 
 struct ActivityRow_Previews: PreviewProvider {
-    
     static var previews: some View {
         ActivityRow(currentActivity: Activity(id: "-1", title: "test", authorUID: "testauth"))
     }

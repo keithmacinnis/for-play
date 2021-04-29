@@ -16,6 +16,7 @@ struct ActivityDetail: View {
 
 struct ActivityDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityDetail(activity: Activity( id: "1", title: "String"))
+        ActivityDetail(activity: Activity( id: "1", title: "String", authorUID: "asdfa"))
     }
 }
+

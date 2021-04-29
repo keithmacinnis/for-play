@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 import FirebaseAuth
-
+import MapKit
 
 final class User: ObservableObject {
     
@@ -18,9 +18,12 @@ final class User: ObservableObject {
     var username: String?
     var password: String?
     var handle: AuthStateDidChangeListenerHandle?
+    var location: CLLocationCoordinate2D?
+    var homeLocation: CLLocationCoordinate2D?
+    private let whereAmI =  LocationFetcher()
     
     init() {
-        print("User.swift init called")
+      print("User.swift init called for \(uid)")
       handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
@@ -29,6 +32,32 @@ final class User: ObservableObject {
                 self.loginState = .showLogin
             }
         }
+        whereAmI.start()
+    }
+    func getLocation() -> MKCoordinateRegion {
+        if let location = whereAmI.lastKnownLocation {
+            print("Your location is \(location)")
+            return MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+        } else {
+            print("Your location is unknown \(location)")
+            return MKCoordinateRegion()
+        }
+    }
+    
+    func getLocation() -> CLLocationCoordinate2D {
+        if let location = whereAmI.lastKnownLocation {
+            print("Your location is \(location)")
+            return location
+        } else {
+            print("Your location is unknown")
+            return CLLocationCoordinate2D()
+        }
+    }
+    func getUID ()-> String {
+        if self.uid == nil {
+            self.uid = Auth.auth().currentUser?.uid
+        }
+        return  self.uid ?? "error"
     }
     func login(_ email: String,_ password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
