@@ -9,18 +9,19 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginView: View {
-   
+    @EnvironmentObject var user: UserViewModel
+
+    @State private var isRotated = false
     @State private var email = ""
     @State private var password = ""
     @State private var newUserSignup = false
     @State private var showingAlert = false
-        
+    
     private let gradient = AngularGradient(
         gradient: Gradient(colors: [.green, .blue]),
         center: .center,
         startAngle: .degrees(0),
         endAngle: .degrees(360))
-
     
     var body: some View {
         if (!newUserSignup) {
@@ -42,25 +43,21 @@ struct LoginView: View {
                 .overlay(Circle().stroke(gradient, lineWidth: 4))
                 .shadow(radius: 10.0, x: 20, y: 10)
                 .padding(.bottom, 50)
-            
             VStack(alignment: .leading, spacing: 15) {
                 TextField("Email", text: self.$email)
                     .accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     .padding()
-                //.background(Color.themeTextField)
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.black)
                 
                 SecureField("Password", text: self.$password)
                     .padding()
-                  //.  .background(Color.themeTextField)
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
                     .foregroundColor(.black)
-                
             }.padding([.leading, .trailing], 50)
-            Button(action: {User().login(email,password)}) {
+            Button(action: {user.login(email,password)}) {
                 Text("Sign In")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -70,7 +67,6 @@ struct LoginView: View {
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
             }.padding(.top, 50)
-            
             Spacer()
             HStack(spacing: 0) {
                 Text("Don't have an account? ")
@@ -79,7 +75,6 @@ struct LoginView: View {
                             .font(.callout)
                         .foregroundColor(.black)
                             .bold()
-                    
                 }
             }
         }
@@ -121,9 +116,7 @@ struct LoginView: View {
                     .shadow(radius: 10.0, x: 20, y: 10)
                 
             }.padding([.leading, .trailing], 50)
-            Button(action: {User().register(email,password)
-                
-            }) {
+            Button(action: {user.register(email,password)} ) {
                 Text("Join For Play")
                     .font(.headline)
                     .foregroundColor(.black)
@@ -133,46 +126,23 @@ struct LoginView: View {
                     .cornerRadius(25.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
             }.padding(.top, 50)
-            
             Spacer()
             HStack(spacing: 0) {
                 Text("Already have an account? ")
                 Button(action: {newUserSignup.toggle()}) {
                         Text("Sign In")
-                            .font(.callout)
+                        .font(.callout)
                         .foregroundColor(.black)
-                            .bold()
-                    
+                        .bold()
                 }
             }
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
-        
     }
     }
-    
-//    func login() {
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//            if error != nil {
-//                print(error?.localizedDescription ?? "error")
-//            } else {
-//                print(result ?? "success")
-//            }
-//        }
-//    }
-//    func register() {
-//        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-//            if error != nil {
-//                print(error?.localizedDescription ?? "error")
-//            } else {
-//                print(result ?? "success")
-//            }
-//        }
-//    }
 }
-
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {

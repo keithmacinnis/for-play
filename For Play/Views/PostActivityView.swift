@@ -10,10 +10,11 @@ import MapKit
 
 struct PostActivityView: View {
     @EnvironmentObject var viewModel: ActivitiesViewModel
-    @EnvironmentObject var user: User
+    @EnvironmentObject var user: UserViewModel
     
-    @State var region: MKCoordinateRegion  //MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: MKPointAnnotation.example.coordinate.latitude, longitude: MKPointAnnotation.example.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
-    @State var centerCoordinate = CLLocationCoordinate2D()
+    @State var region: MKCoordinateRegion
+    @Binding var parentsTab: Tab
+    
     @State private var locations = [MKPointAnnotation]()
     @State private var userTracking = MapUserTrackingMode.follow
     @State private var eventTitle = ""
@@ -26,19 +27,19 @@ struct PostActivityView: View {
     @State private var longDescription: String = "Description"
     @State private var longDescTapped = false
     @State private var scrollTarget: Int?
+    @State private var dateSelected = false
+    @State private var showingAlert = false
+    @State private var showingSuccess = false
+    @State private var activeAlert: ActiveAlert = .postWarning
     
     let dateRange: ClosedRange<Date> = {
         let now = Date()
         let currentMinuteTime = Calendar.current.component(.minute, from: now)
         let startingTime = Calendar.current.date(byAdding: .minute, value: 1440 + (60-currentMinuteTime), to: now)
-        //let components =
         let endingTime = Calendar.current.date(byAdding: .month, value: 6, to: now)
         return startingTime! ... endingTime!
     }()
-    
-//    init() {
-//        print("PostActivityView init called")
-//    }
+
     var body: some View {
     ScrollViewReader { scrollView in
         ScrollView {
@@ -63,7 +64,9 @@ struct PostActivityView: View {
                     .frame(height: 42.3)
                     .accentColor(.black)
                     .foregroundColor(Color.black)
-                    
+                    .onTapGesture {
+                        dateSelected = true
+                    }
                     Toggle(isOn: $isPrivate, label: {
                         Text("Private")
                             .foregroundColor(Color.black)
@@ -88,20 +91,8 @@ struct PostActivityView: View {
                         .foregroundColor(.black)
                         .cornerRadius(25.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
-//                    TextField("Location", text: self.$eventLocation)
-//                        .frame(height: 48)
-//                        .padding()
-//                        .background(Color.themeTextField)
-//                        .foregroundColor(.black)
-//                        .cornerRadius(25.0)
-//                        .shadow(radius: 10.0, x: 20, y: 10)
                     ZStack{
-                    //MapView(centerCoordinate: $centerCoordinate)
-//
-                      
                     Map(coordinateRegion: $region, interactionModes: [MapInteractionModes.all], showsUserLocation: true, userTrackingMode: $userTracking)
-                        //Map(coordinateRegion: $region, showsUserLocation: true , userTrackingMode: $userTracking)
-//                    MapView(centerCoordinate: $centerCoordinate, annotations: locations)
                         .frame( height: 386)
                         .frame(height: 256)
                         .cornerRadius(25.0)
@@ -110,98 +101,34 @@ struct PostActivityView: View {
                         .fill(Color.blue)
                         .opacity(0.3)
                         .frame(width: 16, height: 16)
+                    Circle()
+                        .fill(Color.black)
+                        .opacity(0.3)
+                        .frame(width: 1, height: 1)
                     HStack {
                         Spacer()
                         VStack {
-                            Spacer()
+                        Spacer()
+                        HStack(){
                             VStack(){
-                                //SAVE LOCATION BUTTON
-                                Button(action: {
-                                    let newLocation = MKPointAnnotation()
-                                    newLocation.coordinate = self.region.center
-                                    self.locations.append(newLocation)
-                                    let local: CLLocation = CLLocation(latitude: self.region.center.latitude , longitude: self.region.center.longitude)
-                                    CLGeocoder().reverseGeocodeLocation(local) { (placemarks, error) in
-                                        guard error == nil else {
-                                            print("ReverseGeocode Error: \(error)")
-                                            return
-                                        }
-                                        // Most geocoding requests contain only one result.
-                                        if let firstPlacemark = placemarks?.first {
-                                            //self.mostRecentPlacemark = firstPlacemark
-                                            print(firstPlacemark)
-                                            var addressString : String = ""
-                                            if firstPlacemark.name != nil {
-                                                addressString = addressString + firstPlacemark.name! + ", "
-                                            }else {
-                                                if firstPlacemark.subThoroughfare != nil {
-                                                    addressString = addressString + firstPlacemark.subThoroughfare! + ", "
-                                                }
-                                                if firstPlacemark.thoroughfare != nil {
-                                                    addressString = addressString + firstPlacemark.thoroughfare! + ", "
-                                                }
-                                            }
-                                            if firstPlacemark.subLocality != nil {
-                                                addressString = addressString + firstPlacemark.subLocality! + ", "
-                                            }
-                                            if firstPlacemark.locality != nil {
-                                                addressString = addressString + firstPlacemark.locality! + ", "
-                                            }
-                                            if firstPlacemark.country != nil {
-                                                addressString = addressString + firstPlacemark.country! + ", "
-                                            }
-                                            if firstPlacemark.postalCode != nil {
-                                                addressString = addressString + firstPlacemark.postalCode! + ", "
-                                            }
-                                            if firstPlacemark.region != nil {
-                                                addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
-                                            }
-                                            self.eventLocation = addressString
-                                        }
-                                    }
-                                }) {Image(systemName: "checkmark.circle.fill")
+                                Button(action: {zoom()}) {Image(systemName: "location.circle.fill")
                                     .background(Color.blue.opacity(0.75))
                                     .foregroundColor(.white)
                                     .font(.title)
                                     .clipShape(Circle())
+                                    .rotationEffect(.degrees(30))
                                 }
                             }
                             VStack(){
-                                //ZOOM TO LOCATION BUTTON
-                                Button(action: {
-                                    self.region.center = user.getLocation()
-                                    let newZoom = 0.08 //region.span.latitudeDelta * 0.42
-                                    self.region.span = MKCoordinateSpan(latitudeDelta: newZoom, longitudeDelta: newZoom)
-                                    
-//                                    if let location = locationFetcher.lastKnownLocation {
-//                                        print("Your location is \(location), your cewnter cord is \(self.region)")
-//                                        self.centerCoordinate = location
-//                                        let local: CLLocation = CLLocation(latitude: location.latitude , longitude: location.longitude)
-//                                        CLGeocoder().reverseGeocodeLocation(local) { (placemarks, error) in
-//                                                        guard error == nil else {
-//                                                            print(error)
-//                                                            return
-//                                                        }
-//                                                        // Most geocoding requests contain only one result.
-//                                                        if let firstPlacemark = placemarks?.first {
-//                                                            //self.mostRecentPlacemark = firstPlacemark
-//                                                            self.eventLocation = "\(firstPlacemark.subLocality!), \(firstPlacemark.subThoroughfare!) \(firstPlacemark.thoroughfare!)  + "
-//                                                            print("\(firstPlacemark.locality!)  + \(firstPlacemark.locality) + \(firstPlacemark.subLocality) + \(firstPlacemark.thoroughfare)  + \(firstPlacemark.subThoroughfare) +  + \(firstPlacemark.region)")
-//                                                        }
-//                                                    }
-//                                        } else {
-//                                            print("Your location is unknown")
-//                                        }
-                                    }
-                                    ) {
-                                Image(systemName: "location.circle.fill")
+                                Button(action: {saveCrosshairLocation()}) {
+                                Image(systemName: "checkmark.circle.fill")
                                     .background(Color.blue.opacity(0.75))
                                     .foregroundColor(.white)
                                     .font(.title)
                                     .clipShape(Circle())
-                                   // .rotationEffect(.degrees(45))
                                 }
                             }}}
+                        }
                     }
                     TextEditor(text: self.$eventLocation)
                         .frame(height: 48)
@@ -236,8 +163,15 @@ struct PostActivityView: View {
                     
                 }.padding([.leading, .trailing], 50)
                 
-                Button(action: {viewModel.postActivity(activity: Activity(id: viewModel.getAutoUIDforActivities(), title: self.eventTitle, authorUID: user.uid ?? user.getUID()))}) {
-                    Text("Post Activity")
+                Button(action: {
+                    if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location/GPS (Click the map's checkmark to set me)"{
+                        activeAlert = .postWarning
+                    } else {
+                        activeAlert = .postSuccess
+                    }
+                    showingAlert = true
+                })
+                    {Text("Post Activity")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -247,23 +181,97 @@ struct PostActivityView: View {
                         .shadow(radius: 10.0, x: 20, y: 10)
                         .padding([.bottom],20)
                 }.padding(.top, 50)
-                
-                
-
+                .alert(isPresented: $showingAlert, content: {
+                    switch activeAlert {
+                        case .postWarning :
+                            return Alert(title: Text("Insufficient Details"), message:  Text("You need to add details above. Remember to set your date"), dismissButton: .default(Text("Got it!")))
+                        case .postSuccess :
+                            return  Alert(title: Text("Are you sure you want to post this?"), message: Text("You can edit details, after postinig, under the 'profile->your activtiies' tab"), primaryButton: .default(Text("Post"), action: postActivity), secondaryButton: .cancel())
+                    }
+                })
             }
-
-        }.frame(maxWidth: .infinity)
-        .background(
-            LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all))
+        }
+        .frame(maxWidth: .infinity)
+        .background (LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
-    }.onAppear()
-    {
-        print("PostActivitiyVeiw OnAppear")
     }
 }
+    func clearForm() {
+        eventTitle = ""
+        eventPassword = ""
+        eventActivity = ""
+        eventLocation = "Location/GPS (Click the map's checkmark to set me)"
+        hashTags = ""
+        date = Date()
+        isPrivate = false
+        longDescription = "Description"
+        longDescTapped = false
+        dateSelected = false
+        showingAlert = false
+        showingSuccess = false
+        activeAlert = .postWarning
+    }
+    func postActivity() {
+        viewModel.postActivity(activity: Activity(id: viewModel.getAutoUIDforActivities(), title: self.eventTitle, authorUID: user.uid ?? user.getUID()))
+        clearForm()
+        self.parentsTab = .usersPage
+        
+    }
+    func isActivitySubmitable() {
+        if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location/GPS (Click the map's checkmark to set me)"{
+            showingAlert = true
+        } else {
+            showingSuccess = true
+        }
+    }
+    func saveCrosshairLocation() {
+            let newLocation = MKPointAnnotation()
+            newLocation.coordinate = self.region.center
+            self.locations.append(newLocation)
+            let local: CLLocation = CLLocation(latitude: self.region.center.latitude , longitude: self.region.center.longitude)
+            CLGeocoder().reverseGeocodeLocation(local) { (placemarks, error) in
+                guard error == nil else {
+                    print("ReverseGeocode Error: \(String(describing: error))")
+                    return
+                }
+                if let firstPlacemark = placemarks?.first {
+                    print(firstPlacemark)
+                    var addressString : String = ""
+                    if firstPlacemark.name != nil {
+                        addressString = addressString + firstPlacemark.name! + ", "
+                    }else {
+                        if firstPlacemark.subThoroughfare != nil {
+                            addressString = addressString + firstPlacemark.subThoroughfare! + ", "
+                        }
+                        if firstPlacemark.thoroughfare != nil {
+                            addressString = addressString + firstPlacemark.thoroughfare! + ", "
+                        }
+                    }
+                    if firstPlacemark.subLocality != nil {
+                        addressString = addressString + firstPlacemark.subLocality! + ", "
+                    }
+                    if firstPlacemark.locality != nil {
+                        addressString = addressString + firstPlacemark.locality! + ", "
+                    }
+                    if firstPlacemark.country != nil {
+                        addressString = addressString + firstPlacemark.country! + ", "
+                    }
+                    if firstPlacemark.postalCode != nil {
+                        addressString = addressString + firstPlacemark.postalCode! + ", "
+                    }
+                    if firstPlacemark.region != nil {
+                        addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
+                    }
+                    self.eventLocation = addressString
+                }
+            }
+        }
+    func zoom() {
+        let newZoom = 0.08
+        self.region = MKCoordinateRegion(center: user.getLocation(), span:  MKCoordinateSpan(latitudeDelta: newZoom, longitudeDelta: newZoom))
+    }
 }
 //
 //struct PostActivityView_Previews: PreviewProvider {

@@ -8,12 +8,13 @@
 import SwiftUI
 import Firebase
 import MapKit
+infix operator ++: AdditionPrecedence
 
 @main
 struct For_PlayApp: App {
     @StateObject private var modelData = ModelData()
     @StateObject private var activityData = ActivitiesViewModel()
-    @StateObject private var user = User()
+    @StateObject private var user = UserViewModel()
 
     init() {
         FirebaseApp.configure()
@@ -36,6 +37,10 @@ extension Color {
     }
 }
 
+postfix func ++ <T:Numeric> (x: T) -> T {
+    return x+1
+}
+
 let gradient = AngularGradient(
     gradient: Gradient(colors: [.green, .blue]),
     center: .center,
@@ -46,6 +51,16 @@ enum LoginViewState {
     case showContent
     case showLogin
     case showSignup
+}
+
+enum ActiveAlert {
+    case postWarning, postSuccess
+}
+
+enum Tab {
+    case post
+    case usersPage
+    case publicList
 }
 
 extension MKPointAnnotation {

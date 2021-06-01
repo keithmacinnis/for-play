@@ -12,6 +12,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/Landmarks/LandmarkList.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -28,6 +29,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Model/ActivtiesViewModel.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -44,6 +46,7 @@
                   moduleName = "For Play"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/keithmacinnis/dev/For%20Play/For%20Play/Model/ActivtiesViewModel.swift"
+                  timestampString = "0"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -59,6 +62,7 @@
                   moduleName = "For Play"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/keithmacinnis/dev/For%20Play/For%20Play/Model/ActivtiesViewModel.swift"
+                  timestampString = "0"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -76,6 +80,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Model/ActivtiesViewModel.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -92,6 +97,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Model/ActivtiesViewModel.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -108,10 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Model/ActivtiesViewModel.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "fetchActivties()"
             landmarkType = "7">
          </BreakpointContent>
@@ -124,10 +131,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/For_PlayApp.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "For_PlayApp"
             landmarkType = "14">
          </BreakpointContent>
@@ -140,10 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/For_PlayApp.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "For_PlayApp"
             landmarkType = "14">
          </BreakpointContent>
@@ -156,6 +165,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/LocationView.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -172,6 +182,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/MapView.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -188,6 +199,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/MapView.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -204,10 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/For_PlayApp.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -220,10 +233,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/For_PlayApp.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -231,15 +245,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C0D7CAA4-A575-4680-9679-FBD3670684D7"
+            uuid = "CB9A3CAC-EDA7-4A18-A79E-4DB1917E943B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "For Play/For_PlayApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "++(_:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3193EBFC-56B7-4CCF-8180-5B913F1DDE1F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/PostActivityView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "isActivitySubmitable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A1C9436-7B78-465E-B896-493E015350EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "For Play/Views/PostActivityView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "isActivitySubmitable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C955CDA-6737-42E3-8576-7A96D7F7688D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "For Play/Views/PostActivityView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

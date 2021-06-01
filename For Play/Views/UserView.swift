@@ -44,7 +44,7 @@ struct UserView: View {
                         .shadow(radius: 10.0, x: 20, y: 10)
                 }
 
-                Button(action: {User().logout()}) {
+                Button(action: {UserViewModel().logout()}) {
                     Text("Logout")
                     .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .padding()

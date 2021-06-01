@@ -29,7 +29,8 @@ final class ActivitiesViewModel: ObservableObject {
                 let title = activity.value["title"] as! String
                 let id = activity.value["id"] as! String
                 let authorsUID = activity.value["authorsUID"]  as! String
-              return Activity(id: id, title: title, authorUID: authorsUID)
+                let members = activity.value["members"] as! [String]
+              return Activity(id: id, title: title, authorUID: authorsUID, members: members)
             }
         })
     }
@@ -42,5 +43,9 @@ final class ActivitiesViewModel: ObservableObject {
                 print("activity saved \(ref.description())")
             }
         }
+    }
+    
+    func updateActivity(activityUID: String) {
+        print("Update \(activityUID)")
     }
 }

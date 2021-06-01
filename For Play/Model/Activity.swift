@@ -15,16 +15,19 @@ struct Activity: Hashable, Codable, Identifiable {
     var id: String
     var title: String
     var authorsUID: String
-
-//    init( id: String, title: String){
-//        self.id = id
-//        self.title = title
-//        self.authorsUID = Auth.auth().currentUser?.uid ?? "error reading username"
-//    }
+    var members: [String]
+    
     init( id: String, title: String, authorUID: String){
         self.id = id
         self.title = title
         self.authorsUID = authorUID
+        self.members = [authorUID]
+    }
+    init( id: String, title: String, authorUID: String, members: [String]){
+        self.id = id
+        self.title = title
+        self.authorsUID = authorUID
+        self.members = members
     }
     mutating func updateId(id: String) {
         self.id = id
@@ -44,7 +47,8 @@ struct Activity: Hashable, Codable, Identifiable {
       return [
         "id": id,
         "title": title,
-        "authorsUID": authorsUID
+        "authorsUID": authorsUID,
+        "members": members
       ]
     }
 //    private var coordinates: Coordinates
