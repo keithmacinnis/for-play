@@ -9,24 +9,26 @@ import SwiftUI
 
 struct ActivtiesList: View {
     @EnvironmentObject var viewModel: ActivitiesViewModel
-    @State private var zoomStepperValue = 2
+    @State private var zoomStepperValue = 3
     let zoomLevels: [String] = ["National","Provincial","Regional","Local"]
     
-    func incrementZoom() {
-        print(zoomStepperValue)
-        if zoomStepperValue < zoomLevels.count - 1 { zoomStepperValue += 1 }
-    }
-    func decrementZoom() {
-        print(zoomStepperValue)
-        if zoomStepperValue > 0 { zoomStepperValue -= 1 }
-    }
- 
+//    func incrementZoom() {
+//        print(zoomStepperValue)
+//        if zoomStepperValue < zoomLevels.count - 1 { zoomStepperValue += 1 }
+//    }
+//    func decrementZoom() {
+//        print(zoomStepperValue)
+//        if zoomStepperValue > 0 { zoomStepperValue -= 1 }
+//    }
+//
     var body: some View {
         NavigationView {
             List {
-                Stepper(onIncrement: incrementZoom, onDecrement: decrementZoom) {
-                    Text("Zoom")
-                }
+                Stepper("", value: $zoomStepperValue, in: 0...3)
+//
+//                Stepper(onIncrement: incrementZoom, onDecrement: decrementZoom) {
+//                    Text("Zoom")
+//                }
                 ForEach(viewModel.activities) { activity in
                     NavigationLink(destination: ActivityDetail(activity: activity)) {
                         ActivityRow(currentActivity: activity)

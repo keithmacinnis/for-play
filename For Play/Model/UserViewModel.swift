@@ -20,10 +20,11 @@ final class UserViewModel: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     var location: CLLocationCoordinate2D?
     var homeLocation: CLLocationCoordinate2D?
+    var lastErrorMsg: String?
     private let whereAmI =  LocationFetcher()
     
     init() {
-      print("User.swift init called for \(uid)")
+      print("UserViewModel.swift init called for \(uid)")
       handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
@@ -60,6 +61,26 @@ final class UserViewModel: ObservableObject {
             self.uid = Auth.auth().currentUser?.uid
         }
         return  self.uid ?? "error"
+    }
+    func getEmail ()-> String {
+        if self.email == nil {
+            self.email = Auth.auth().currentUser?.email
+        }
+        return  self.email ?? "error"
+    }
+    func passwordResetRequest(_ email: String,
+                              onSuccess: @escaping() -> Void,
+                              onError: @escaping(_ errorMessage: String) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                let errorMessage = error?.localizedDescription ?? "unknown error"
+                print("In UserViewModel.PasswordResetRequest(): \(errorMessage)")
+                onError(errorMessage)
+            } else {
+                print("success")
+                onSuccess()
+            }
+        }
     }
     func login(_ email: String,_ password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in

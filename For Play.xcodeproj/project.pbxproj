@@ -191,7 +191,7 @@
 				E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */,
 				E38388ED2628120E007BCCE6 /* PublicList */,
 				E38388AC26280D5D007BCCE6 /* Hikes */,
-				E38388B126280D5D007BCCE6 /* Landmarks */,
+				E38388B126280D5D007BCCE6 /* Activities */,
 				E38388B526280D5D007BCCE6 /* Profiles */,
 				E38388B926280D5D007BCCE6 /* Categories */,
 				E38388BD26280D5D007BCCE6 /* Helpers */,
@@ -211,7 +211,7 @@
 			path = Hikes;
 			sourceTree = "<group>";
 		};
-		E38388B126280D5D007BCCE6 /* Landmarks */ = {
+		E38388B126280D5D007BCCE6 /* Activities */ = {
 			isa = PBXGroup;
 			children = (
 				E38388B226280D5D007BCCE6 /* LandmarkList.swift */,
@@ -221,7 +221,7 @@
 				E38388B326280D5D007BCCE6 /* LandmarkDetail.swift */,
 				E38388B426280D5D007BCCE6 /* LandmarkRow.swift */,
 			);
-			path = Landmarks;
+			path = Activities;
 			sourceTree = "<group>";
 		};
 		E38388B526280D5D007BCCE6 /* Profiles */ = {

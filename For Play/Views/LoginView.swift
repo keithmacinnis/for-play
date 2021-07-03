@@ -15,7 +15,9 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var newUserSignup = false
-    @State private var showingAlert = false
+    @State private var showingResetPasswordAlert = false
+    @State private var showingErrorMsg = false
+    @State private var errorMsg = "-3"
     
     private let gradient = AngularGradient(
         gradient: Gradient(colors: [.green, .blue]),
@@ -68,13 +70,39 @@ struct LoginView: View {
                     .shadow(radius: 10.0, x: 20, y: 10)
             }.padding(.top, 50)
             Spacer()
-            HStack(spacing: 0) {
-                Text("Don't have an account? ")
-                Button(action: {newUserSignup.toggle()}) {
-                        Text("Sign Up")
+            VStack(spacing: 13){
+                HStack(spacing: 0) {
+                    Text("Forget your password? ")
+                    Button(action: {
+                        user.passwordResetRequest(email,
+                            onSuccess: {
+                            showingResetPasswordAlert = true
+                        }, onError: { err in
+                            self.errorMsg = err
+                            showingErrorMsg = true
+                        }
+                        )
+                    }
+                    , label: {
+                        Text("Reset Password")
                             .font(.callout)
-                        .foregroundColor(.black)
+                            .foregroundColor(.black)
                             .bold()
+                    }).alert(isPresented: $showingResetPasswordAlert) {
+                        Alert(title: Text("Important message"), message: Text("Password Reset Email will be sent to \(email)"), dismissButton: .default(Text("Got it!")))
+                    }
+                    .alert(isPresented: $showingErrorMsg) {
+                        Alert(title: Text("Important message"), message: Text("Error: \(self.errorMsg) occured during the password reset for the email:  \(email)"), dismissButton: .default(Text("Got it..")))
+                    }
+                }
+                HStack(spacing: 0) {
+                    Text("Don't have an account? ")
+                    Button(action: {newUserSignup.toggle()}) {
+                            Text("Sign Up")
+                            .font(.callout)
+                            .foregroundColor(.black)
+                            .bold()
+                    }
                 }
             }
         }

@@ -28,7 +28,7 @@ struct For_PlayApp: App {
                 .environmentObject(activityData)
                 .environmentObject(user)
         }
-    }
+    }	
 }
 
 extension Color {
@@ -66,7 +66,7 @@ enum Tab {
 extension MKPointAnnotation {
     static var example: MKPointAnnotation {
         let annotation = MKPointAnnotation()
-        annotation.title = "Whisitler"
+        annotation.title = "Whistler"
         annotation.subtitle = "Home to the 2010 Winter Olympics."
         annotation.coordinate = CLLocationCoordinate2D(latitude:  -50.154164 , longitude: -122.96390)
         return annotation

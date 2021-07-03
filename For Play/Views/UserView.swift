@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserView: View { 
-    
+    @EnvironmentObject var user: UserViewModel
  
     
     var body: some View {
@@ -22,7 +22,7 @@ struct UserView: View {
                 .overlay(Circle().stroke(gradient, lineWidth: 4))
                 .shadow(radius: 10.0, x: 20, y: 10)
                 
-            Text("Member Since 2021")
+            Text("\(user.getEmail()): Member Since 2021")
                 .shadow(radius: 10.0, x: 20, y: 10)
                 .padding(.bottom, 50)
             Spacer()
