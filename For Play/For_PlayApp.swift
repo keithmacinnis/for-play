@@ -46,6 +46,11 @@ let gradient = AngularGradient(
     center: .center,
     startAngle: .degrees(0),
     endAngle: .degrees(360))
+enum ActiveAlert_3 {
+    case first
+    case second
+    case third
+}
 
 enum LoginViewState {
     case showContent

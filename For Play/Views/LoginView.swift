@@ -8,6 +8,8 @@
 import SwiftUI
 import FirebaseAuth
 
+
+
 struct LoginView: View {
     @EnvironmentObject var user: UserViewModel
 
@@ -15,9 +17,9 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var newUserSignup = false
-    @State private var showingResetPasswordAlert = false
-    @State private var showingErrorMsg = false
-    @State private var errorMsg = "-3"
+    @State private var showAlert = false
+    @State private var errorMsg = "0"
+    @State private var activeAlert: ActiveAlert_3 = .first
     
     private let gradient = AngularGradient(
         gradient: Gradient(colors: [.green, .blue]),
@@ -75,11 +77,13 @@ struct LoginView: View {
                     Text("Forget your password? ")
                     Button(action: {
                         user.passwordResetRequest(email,
-                            onSuccess: {
-                            showingResetPasswordAlert = true
+                         onSuccess: {
+                            self.activeAlert = .first
+                            self.showAlert = true
                         }, onError: { err in
                             self.errorMsg = err
-                            showingErrorMsg = true
+                            self.activeAlert = .second
+                            self.showAlert = true
                         }
                         )
                     }
@@ -88,11 +92,15 @@ struct LoginView: View {
                             .font(.callout)
                             .foregroundColor(.black)
                             .bold()
-                    }).alert(isPresented: $showingResetPasswordAlert) {
-                        Alert(title: Text("Important message"), message: Text("Password Reset Email will be sent to \(email)"), dismissButton: .default(Text("Got it!")))
-                    }
-                    .alert(isPresented: $showingErrorMsg) {
-                        Alert(title: Text("Important message"), message: Text("Error: \(self.errorMsg) occured during the password reset for the email:  \(email)"), dismissButton: .default(Text("Got it..")))
+                    }).alert(isPresented: $showAlert) {
+                        switch activeAlert {
+                            case .first:
+                                return Alert(title: Text("Important message"), message: Text("Password Reset Email will be sent to \(email)"), dismissButton: .default(Text("Got it!")))
+                            case .second:
+                                return Alert(title: Text("Important message"), message: Text("Error: \(self.errorMsg) This error occured during the password reset for the email: \"\(email)\""), dismissButton: .default(Text("Got it..")))
+                            default: return Alert(title: Text("Err"))
+                        }
+                        
                     }
                 }
                 HStack(spacing: 0) {

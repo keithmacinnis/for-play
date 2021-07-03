@@ -20,7 +20,6 @@ final class UserViewModel: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     var location: CLLocationCoordinate2D?
     var homeLocation: CLLocationCoordinate2D?
-    var lastErrorMsg: String?
     private let whereAmI =  LocationFetcher()
     
     init() {
@@ -74,10 +73,10 @@ final class UserViewModel: ObservableObject {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
                 let errorMessage = error?.localizedDescription ?? "unknown error"
-                print("In UserViewModel.PasswordResetRequest(): \(errorMessage)")
+                //print("In UserViewModel.PasswordResetRequest(): \(errorMessage)")
                 onError(errorMessage)
             } else {
-                print("success")
+                //print("success")
                 onSuccess()
             }
         }
