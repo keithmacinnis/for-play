@@ -47,9 +47,8 @@
 		E38388F6262812F9007BCCE6 /* PublicListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38388F5262812F9007BCCE6 /* PublicListDetail.swift */; };
 		E38388F926281323007BCCE6 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38388F826281323007BCCE6 /* Activity.swift */; };
 		E388113926350F9800276CFB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388113826350F9800276CFB /* UserView.swift */; };
-		E388113C26351FAC00276CFB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388113B26351FAC00276CFB /* MapView.swift */; };
+		E388113C26351FAC00276CFB /* ForPlay_MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388113B26351FAC00276CFB /* ForPlay_MapView.swift */; };
 		E38811412635378E00276CFB /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38811402635378E00276CFB /* LocationFetcher.swift */; };
-		E388114426353AC000276CFB /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388114326353AC000276CFB /* LocationView.swift */; };
 		E38811582646514D00276CFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38811572646514D00276CFB /* User.swift */; };
 		E38A2F692630ABD1007D65C4 /* PostActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A2F682630ABD1007D65C4 /* PostActivityView.swift */; };
 		E3BCF941262822A400768BEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3BCF940262822A400768BEA /* GoogleService-Info.plist */; };
@@ -103,9 +102,8 @@
 		E38388F5262812F9007BCCE6 /* PublicListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicListDetail.swift; sourceTree = "<group>"; };
 		E38388F826281323007BCCE6 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		E388113826350F9800276CFB /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		E388113B26351FAC00276CFB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E388113B26351FAC00276CFB /* ForPlay_MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPlay_MapView.swift; sourceTree = "<group>"; };
 		E38811402635378E00276CFB /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
-		E388114326353AC000276CFB /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		E38811572646514D00276CFB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E38A2F682630ABD1007D65C4 /* PostActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActivityView.swift; sourceTree = "<group>"; };
 		E3BCF940262822A400768BEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -135,6 +133,15 @@
 				75C40B6FA7C24EF5BF7A89E3 /* Pods-For Play.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E378A699269211D900695471 /* PostActivity */ = {
+			isa = PBXGroup;
+			children = (
+				E388113B26351FAC00276CFB /* ForPlay_MapView.swift */,
+				E38A2F682630ABD1007D65C4 /* PostActivityView.swift */,
+			);
+			path = PostActivity;
 			sourceTree = "<group>";
 		};
 		E383888E26280C6B007BCCE6 = {
@@ -182,12 +189,9 @@
 		E38388AB26280D5D007BCCE6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E378A699269211D900695471 /* PostActivity */,
 				E388113826350F9800276CFB /* UserView.swift */,
-				E388113B26351FAC00276CFB /* MapView.swift */,
-				E38811402635378E00276CFB /* LocationFetcher.swift */,
-				E388114326353AC000276CFB /* LocationView.swift */,
 				E30E7E9C2628BBF00043C16B /* LoginView.swift */,
-				E38A2F682630ABD1007D65C4 /* PostActivityView.swift */,
 				E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */,
 				E38388ED2628120E007BCCE6 /* PublicList */,
 				E38388AC26280D5D007BCCE6 /* Hikes */,
@@ -278,6 +282,7 @@
 		E38388CB26280D5D007BCCE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E38811402635378E00276CFB /* LocationFetcher.swift */,
 				E38388CC26280D5D007BCCE6 /* Profile.swift */,
 				E38388CD26280D5D007BCCE6 /* Hike.swift */,
 				E38388CE26280D5D007BCCE6 /* ModelData.swift */,
@@ -430,7 +435,7 @@
 				E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */,
 				E38388E926280D5E007BCCE6 /* Hike.swift in Sources */,
 				E38388D326280D5E007BCCE6 /* HikeView.swift in Sources */,
-				E388113C26351FAC00276CFB /* MapView.swift in Sources */,
+				E388113C26351FAC00276CFB /* ForPlay_MapView.swift in Sources */,
 				E38388EB26280D5E007BCCE6 /* Landmark.swift in Sources */,
 				E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */,
 				E38388E126280D5E007BCCE6 /* RotatedBadgeSymbol.swift in Sources */,
@@ -465,7 +470,6 @@
 				E38388DE26280D5E007BCCE6 /* CircleImage.swift in Sources */,
 				E38811412635378E00276CFB /* LocationFetcher.swift in Sources */,
 				E38A2F692630ABD1007D65C4 /* PostActivityView.swift in Sources */,
-				E388114426353AC000276CFB /* LocationView.swift in Sources */,
 				E38388D226280D5D007BCCE6 /* HikeDetail.swift in Sources */,
 				E38388D626280D5E007BCCE6 /* LandmarkRow.swift in Sources */,
 			);
