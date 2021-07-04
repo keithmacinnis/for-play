@@ -11,7 +11,7 @@ import MapKit
 infix operator ++: AdditionPrecedence
 
 @main
-struct For_PlayApp: App {
+struct ForPlayApp: App {
     @StateObject private var modelData = ModelData()
     @StateObject private var activityData = ActivitiesViewModel()
     @StateObject private var user = UserViewModel()
@@ -19,8 +19,7 @@ struct For_PlayApp: App {
     init() {
         FirebaseApp.configure()
         UITextView.appearance().backgroundColor = .clear
-     }
-    
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -28,7 +27,7 @@ struct For_PlayApp: App {
                 .environmentObject(activityData)
                 .environmentObject(user)
         }
-    }	
+    }
 }
 
 extension Color {
@@ -37,8 +36,8 @@ extension Color {
     }
 }
 
-postfix func ++ <T:Numeric> (x: T) -> T {
-    return x+1
+postfix func ++ <T: Numeric> (incremtee: T) -> T {
+    return incremtee+1
 }
 
 let gradient = AngularGradient(
@@ -46,7 +45,7 @@ let gradient = AngularGradient(
     center: .center,
     startAngle: .degrees(0),
     endAngle: .degrees(360))
-enum ActiveAlert_3 {
+enum ThreeActiveAlerts {
     case first
     case second
     case third
@@ -73,17 +72,17 @@ extension MKPointAnnotation {
         let annotation = MKPointAnnotation()
         annotation.title = "Whistler"
         annotation.subtitle = "Home to the 2010 Winter Olympics."
-        annotation.coordinate = CLLocationCoordinate2D(latitude:  -50.154164 , longitude: -122.96390)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: -50.154164, longitude: -122.96390)
         return annotation
     }
 }
 
-//extension Map {
+// extension Map {
 //    func mapViewDidChangeVisibleRegion(_ mapView: Map) {
 //        mapView.onTapGesture {
 //            mapView.
 //        }}
-//}
+// }
 //
 //    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
 //    ////            if !mapView.showsUserLocation {
@@ -91,10 +90,10 @@ extension MKPointAnnotation {
 //        print("Tracking now off")
 //    //            //  /   }
 //            }
-//}
+// }
 
 //        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-////            if !mapView.showsUserLocation {
+//            if !mapView.showsUserLocation {
 //                print("updating center cord")
 //                parent.centerCoordinate = mapView.centerCoordinate
 //            //  /   }

@@ -19,7 +19,7 @@ struct LoginView: View {
     @State private var newUserSignup = false
     @State private var showAlert = false
     @State private var errorMsg = "0"
-    @State private var activeAlert: ActiveAlert_3 = .first
+    @State private var activeAlert: ThreeActiveAlerts = .first
     
     private let gradient = AngularGradient(
         gradient: Gradient(colors: [.green, .blue]),
