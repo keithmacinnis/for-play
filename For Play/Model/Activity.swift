@@ -23,6 +23,9 @@ struct Activity: Hashable, Codable, Identifiable {
         self.authorsUID = authorUID
         self.members = [authorUID]
     }
+    init(activity: Activity) {
+        self = activity
+    }
     init( id: String, title: String, authorUID: String, members: [String]){
         self.id = id
         self.title = title
@@ -31,6 +34,9 @@ struct Activity: Hashable, Codable, Identifiable {
     }
     mutating func updateId(id: String) {
         self.id = id
+    }
+    mutating func addMemeber(id: String) {
+        members.append(id)
     }
 //    var isPrivate: Bool?
 //    var locality: String?

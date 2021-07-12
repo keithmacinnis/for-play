@@ -36,9 +36,9 @@ struct ActivtiesList: View {
                 }
             }
             .navigationTitle("\(zoomLevels[zoomStepperValue]) Activities")
-            .onAppear {
-                self.viewModel.fetchActivties()
-            }
+//            .onAppear {
+//                self.viewModel.fetchActivties()
+//            }
             
         }
     }

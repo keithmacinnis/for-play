@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import FirebaseAuth
 import MapKit
+import Firebase
 
 final class UserViewModel: ObservableObject {
     //Store location ni homelocation to make fetching local lazyier
@@ -23,7 +24,7 @@ final class UserViewModel: ObservableObject {
     private let whereAmI =  LocationFetcher()
     
     init() {
-      print("UserViewModel.swift init called for \(uid)")
+        print("UserViewModel.swift init called for \(String(describing: uid))")
       handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
@@ -34,6 +35,22 @@ final class UserViewModel: ObservableObject {
         }
         whereAmI.start()
     }
+//    func getMeta(_ uid : String) {
+//        //TODO Implement observeMeta to reduce bandwidth
+//        let ref = Database.database().reference().child("users").child(uid)
+//        ref.getData { (error, snapshot) in
+//            if let error = error {
+//                print("Error getting data \(error)")
+//            }
+//            else if snapshot.exists() {
+//                print("Got data \(snapshot.value!)")
+//            }
+//            else {
+//                print("No data available")
+//            }
+//        }
+//    }
+    
     func getLocation() -> MKCoordinateRegion {
         if let location = whereAmI.lastKnownLocation {
             print("Your location is \(location)")

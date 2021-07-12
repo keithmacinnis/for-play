@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ActivityDetail: View {
     @EnvironmentObject var activityViewModel: ActivitiesViewModel
+    @EnvironmentObject var user: UserViewModel
+
 
     let activity: Activity
     var body: some View {
@@ -21,7 +23,7 @@ struct ActivityDetail: View {
         Text("members")
         Text(activity.members[0])
         Button(action: {
-            activityViewModel.updateActivity(activityUID: activity.id)
+            activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID())
         })
             {Text("Join Activity")
                 .font(.headline)

@@ -8,44 +8,44 @@
 import Foundation
 import Firebase
 import Combine
+import FirebaseFirestoreSwift
+
 
 final class ActivitiesViewModel: ObservableObject {
-    
-    private var ref = Database.database().reference(withPath: "Activties")
+    var db: Firestore
     @Published var activities: [Activity] = []
     
     init() {
         print("ActivitiesViewModel.swift init called")
+        db = Firestore.firestore()
+        fetchActivties()
     }
-    
-    func getAutoUIDforActivities() -> String {
-        return ref.childByAutoId().key!
-    }
-    
     func fetchActivties() {
-        ref.observe(DataEventType.value, with:  { snapshot in
-            let data = snapshot.value as? [String : AnyObject] ?? [:]
-            self.activities = data.map { (activity) -> Activity in
-                let title = activity.value["title"] as! String
-                let id = activity.value["id"] as! String
-                let authorsUID = activity.value["authorsUID"]  as! String
-                let members = activity.value["members"] as! [String]
-              return Activity(id: id, title: title, authorUID: authorsUID, members: members)
+        db.collection("activities").addSnapshotListener {  snapshot, error    in
+            guard let activityDocuments = snapshot?.documents else {
+                print ("Error fetching: \(error)")
+                return
             }
-        })
-    }
-    
-    func postActivity(activity: Activity) {
-        ref.child(activity.id).setValue(activity.toAnyObject()) { (err, ref) in
-            if let error = err {
-                print("Error during save: \(error.localizedDescription)")
-            } else {
-                print("activity saved \(ref.description())")
-            }
+            self.activities = activityDocuments.compactMap { activity in
+               try? activity.data(as: Activity.self)
+            } ?? []
+            print(self.activities)
         }
     }
-    
-    func updateActivity(activityUID: String) {
-        print("Update \(activityUID)")
+    //Called when a user hits Post Activity
+    func postActivity(activity: Activity) {
+        print("postActivity")
+        do {
+            try db.collection("activities").addDocument(from: activity)
+        } catch let error {
+            print("Error writing activity to Firestore: \(error)")
+        }
+    }
+    //Called when a user hits Join Activity
+    func updateActivity(activityUID: String, userUID: String) {
+        let ref = db.collection("activities").document(activityUID)
+        ref.updateData([
+            "members": FieldValue.arrayUnion([userUID])
+        ])
     }
 }

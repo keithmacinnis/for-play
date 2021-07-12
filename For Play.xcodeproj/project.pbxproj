@@ -11,7 +11,7 @@
 		E30E7E9D2628BBF00043C16B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7E9C2628BBF00043C16B /* LoginView.swift */; };
 		E30E7EB02628C5480043C16B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EAF2628C5480043C16B /* UserViewModel.swift */; };
 		E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */; };
-		E383889B26280C6B007BCCE6 /* For_PlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* For_PlayApp.swift */; };
+		E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* ForPlayApp.swift */; };
 		E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889C26280C6B007BCCE6 /* ContentView.swift */; };
 		E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E383889E26280C6E007BCCE6 /* Assets.xcassets */; };
 		E38388A226280C6E007BCCE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38388A126280C6E007BCCE6 /* Preview Assets.xcassets */; };
@@ -65,7 +65,7 @@
 		E30E7EAF2628C5480043C16B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinUnlistedView.swift; sourceTree = "<group>"; };
 		E383889726280C6B007BCCE6 /* For Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "For Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E383889A26280C6B007BCCE6 /* For_PlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = For_PlayApp.swift; sourceTree = "<group>"; };
+		E383889A26280C6B007BCCE6 /* ForPlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPlayApp.swift; sourceTree = "<group>"; };
 		E383889C26280C6B007BCCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E383889E26280C6E007BCCE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E38388A126280C6E007BCCE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		E383889926280C6B007BCCE6 /* For Play */ = {
 			isa = PBXGroup;
 			children = (
-				E383889A26280C6B007BCCE6 /* For_PlayApp.swift */,
+				E383889A26280C6B007BCCE6 /* ForPlayApp.swift */,
 				E383889C26280C6B007BCCE6 /* ContentView.swift */,
 				E38388CB26280D5D007BCCE6 /* Model */,
 				E38388C826280D5D007BCCE6 /* Resources */,
@@ -455,7 +455,7 @@
 				E3D262902631212F00ADCBE5 /* ActivityDetail.swift in Sources */,
 				E38388D526280D5E007BCCE6 /* LandmarkDetail.swift in Sources */,
 				E38388DC26280D5E007BCCE6 /* CategoryRow.swift in Sources */,
-				E383889B26280C6B007BCCE6 /* For_PlayApp.swift in Sources */,
+				E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */,
 				E3D2628D2631210C00ADCBE5 /* ActivityRow.swift in Sources */,
 				E38388F926281323007BCCE6 /* Activity.swift in Sources */,
 				E38388E826280D5E007BCCE6 /* Profile.swift in Sources */,
