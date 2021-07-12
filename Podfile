@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '10.0'
+ platform :ios, '14.0'
 
 target 'For Play' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,6 +10,7 @@ target 'For Play' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'SwiftUIRefresh'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods1
 end

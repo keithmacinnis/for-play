@@ -12,7 +12,6 @@ infix operator ++: AdditionPrecedence
 
 @main
 struct ForPlayApp: App {
-    @StateObject private var modelData = ModelData()
     @StateObject private var activityData = ActivitiesViewModel()
     @StateObject private var user = UserViewModel()
 
@@ -23,7 +22,6 @@ struct ForPlayApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
                 .environmentObject(activityData)
                 .environmentObject(user)
         }

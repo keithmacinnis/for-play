@@ -6,47 +6,35 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct ActivtiesList: View {
     @EnvironmentObject var viewModel: ActivitiesViewModel
     @State private var zoomStepperValue = 3
+    @State private var isShowing = false
     let zoomLevels: [String] = ["National","Provincial","Regional","Local"]
     
-//    func incrementZoom() {
-//        print(zoomStepperValue)
-//        if zoomStepperValue < zoomLevels.count - 1 { zoomStepperValue += 1 }
-//    }
-//    func decrementZoom() {
-//        print(zoomStepperValue)
-//        if zoomStepperValue > 0 { zoomStepperValue -= 1 }
-//    }
-//
     var body: some View {
         NavigationView {
             List {
                 Stepper("", value: $zoomStepperValue, in: 0...3)
-//
-//                Stepper(onIncrement: incrementZoom, onDecrement: decrementZoom) {
-//                    Text("Zoom")
-//                }
                 ForEach(viewModel.activities) { activity in
                     NavigationLink(destination: ActivityDetail(activity: activity)) {
                         ActivityRow(currentActivity: activity)
                     }
                 }
             }
+            .pullToRefresh(isShowing: $isShowing) {
+                viewModel.fetchActivties()
+                self.isShowing = false
+            }
             .navigationTitle("\(zoomLevels[zoomStepperValue]) Activities")
-//            .onAppear {
-//                self.viewModel.fetchActivties()
-//            }
-            
         }
     }
-
-struct ActivtiesList_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivtiesList()
+    struct ActivtiesList_Previews: PreviewProvider {
+        static var previews: some View {
+            ActivtiesList()
+        }
     }
-}
 }
 

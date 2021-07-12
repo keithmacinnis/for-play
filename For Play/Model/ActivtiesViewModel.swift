@@ -4,12 +4,10 @@
 //
 //  Created by Keith MacInnis on 2021-04-21.
 //
-
-import Foundation
-import Firebase
 import Combine
+import Foundation
+import FirebaseFirestore
 import FirebaseFirestoreSwift
-
 
 final class ActivitiesViewModel: ObservableObject {
     var db: Firestore

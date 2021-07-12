@@ -21,7 +21,10 @@ struct ActivityDetail: View {
         Text("title")
         Text(activity.title)
         Text("members")
-        Text(activity.members[0])
+        List(activity.members, id: \.self) { dude in
+            Text(dude)
+                .moveDisabled(true)
+        }
         Button(action: {
             activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID())
         })
