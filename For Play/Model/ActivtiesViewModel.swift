@@ -35,9 +35,10 @@ final class ActivitiesViewModel: ObservableObject {
         }
     }
     func postActivity(title: String, authorUID: String, date: Date) {
-        let activity = Activity(title: title, authorUID: authorUID, members: [authorUID], date: date)
+        let ref = db.collection("activities").document()
+        let activity = Activity(id: ref.documentID, title: title, authorUID: authorUID, members: [authorUID], date: date)
         do {
-            try db.collection("activities").addDocument(from: activity)
+            try ref.setData(from: activity) //db.collection("activities").addDocument(from: activity)
         } catch let error {
             print("Error writing activity to Firestore: \(error)")
         }

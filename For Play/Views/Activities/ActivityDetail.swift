@@ -26,7 +26,7 @@ struct ActivityDetail: View {
                 .moveDisabled(true)
         }
         Button(action: {
-            activityViewModel.updateActivity(activityUID: activity.id!, userUID: user.getUID())
+            activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID())
         })
             {Text("Join Activity")
                 .font(.headline)

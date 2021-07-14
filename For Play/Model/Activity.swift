@@ -9,7 +9,7 @@ import Foundation
 
 struct Activity: Hashable, Codable, Identifiable {
     
-    var id: String?
+    var id: String
     var title: String
     var authorsUID: String
     var members: [String]
@@ -28,7 +28,8 @@ struct Activity: Hashable, Codable, Identifiable {
         self = activity
         self.setId(id: newId)
     }
-    init(title: String, authorUID: String, members: [String], date: Date){
+    init(id: String, title: String, authorUID: String, members: [String], date: Date){
+        self.id = id
         self.title = title
         self.authorsUID = authorUID
         self.members = members
