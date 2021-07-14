@@ -14,6 +14,7 @@ import Firebase
 final class UserViewModel: ObservableObject {
     //Store location ni homelocation to make fetching local lazyier
     @Published var loginState: LoginViewState = Auth.auth().currentUser !=  nil ? .showContent : .showLogin
+    
     var uid: String?
     var email: String?
     var username: String?
@@ -25,31 +26,17 @@ final class UserViewModel: ObservableObject {
     
     init() {
         print("UserViewModel.swift init called for \(String(describing: uid))")
-      handle = Auth.auth().addStateDidChangeListener { (auth,user) in
+        handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
             } else {
                 print("User is nil (from user.swift)")
                 self.loginState = .showLogin
+                print(self.email)
             }
         }
         whereAmI.start()
     }
-//    func getMeta(_ uid : String) {
-//        //TODO Implement observeMeta to reduce bandwidth
-//        let ref = Database.database().reference().child("users").child(uid)
-//        ref.getData { (error, snapshot) in
-//            if let error = error {
-//                print("Error getting data \(error)")
-//            }
-//            else if snapshot.exists() {
-//                print("Got data \(snapshot.value!)")
-//            }
-//            else {
-//                print("No data available")
-//            }
-//        }
-//    }
     
     func getLocation() -> MKCoordinateRegion {
         if let location = whereAmI.lastKnownLocation {
@@ -117,14 +104,11 @@ final class UserViewModel: ObservableObject {
         }
     }
     func logout() {
-    let firebaseAuth = Auth.auth()
-       do {
-         try firebaseAuth.signOut()
-       } catch let signOutError as NSError {
-         print ("Error signing out: %@", signOutError)
-       }
+        let firebaseAuth = Auth.auth()
+           do {
+                 try firebaseAuth.signOut()
+               } catch let signOutError as NSError {
+                 print ("Error signing out: %@", signOutError)
+               }
     }
-     
-        
 }
-

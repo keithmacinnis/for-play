@@ -12,10 +12,11 @@ import Foundation
 
 struct Activity: Hashable, Codable, Identifiable {
     
-    var id: String
+    var id: String?
     var title: String
     var authorsUID: String
     var members: [String]
+    var date: Date?
     
     init( id: String, title: String, authorUID: String){
         self.id = id
@@ -26,13 +27,17 @@ struct Activity: Hashable, Codable, Identifiable {
     init(activity: Activity) {
         self = activity
     }
-    init( id: String, title: String, authorUID: String, members: [String]){
-        self.id = id
+    init(activity: Activity, newId: String) {
+        self = activity
+        self.setId(id: newId)
+    }
+    init(title: String, authorUID: String, members: [String], date: Date){
         self.title = title
         self.authorsUID = authorUID
         self.members = members
+        self.date = date
     }
-    mutating func updateId(id: String) {
+    mutating func setId(id: String) {
         self.id = id
     }
     mutating func addMemeber(id: String) {

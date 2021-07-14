@@ -18,6 +18,9 @@ final class ActivitiesViewModel: ObservableObject {
         db = Firestore.firestore()
         fetchActivties()
     }
+    func getUniqueIDforActivity() -> String {
+        return db.collection("activities").document().documentID
+    }
     func fetchActivties() {
         db.collection("activities").addSnapshotListener {  snapshot, error    in
             guard let activityDocuments = snapshot?.documents else {
@@ -30,18 +33,17 @@ final class ActivitiesViewModel: ObservableObject {
             print(self.activities)
         }
     }
-    //Called when a user hits Post Activity
-    func postActivity(activity: Activity) {
-        print("postActivity")
+    func postActivity(title: String, authorUID: String, date: Date) {
+        let activity = Activity(title: title, authorUID: authorUID, members: [authorUID], date: date)
         do {
             try db.collection("activities").addDocument(from: activity)
         } catch let error {
             print("Error writing activity to Firestore: \(error)")
         }
     }
-    //Called when a user hits Join Activity
     func updateActivity(activityUID: String, userUID: String) {
         let ref = db.collection("activities").document(activityUID)
+        print(activityUID)
         ref.updateData([
             "members": FieldValue.arrayUnion([userUID])
         ])

@@ -14,7 +14,7 @@ struct ActivityDetail: View {
 
     let activity: Activity
     var body: some View {
-        Text("Author")
+        Text("Au    thor")
         Text(activity.authorsUID)
         Text("id")
         Text(activity.id)
@@ -26,7 +26,7 @@ struct ActivityDetail: View {
                 .moveDisabled(true)
         }
         Button(action: {
-            activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID())
+            activityViewModel.updateActivity(activityUID: activity.id!, userUID: user.getUID())
         })
             {Text("Join Activity")
                 .font(.headline)
