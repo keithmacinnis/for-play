@@ -6,9 +6,6 @@
 //
 
 import Foundation
-//import SwiftUI
-//import CoreLocation
-//import Firebase
 
 struct Activity: Hashable, Codable, Identifiable {
     

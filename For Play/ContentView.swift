@@ -5,7 +5,6 @@
 //  Created by Keith MacInnis on 2021-04-14.
 //
 
-
 import SwiftUI
 import FirebaseAuth
 
@@ -49,5 +48,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(UserViewModel())
     }
 }
-
-

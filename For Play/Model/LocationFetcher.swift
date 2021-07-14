@@ -15,29 +15,10 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         manager.delegate = self
-        
     }
     
     func start() {
-//        let status = CLLocationManager.authorizationStatus()
-//        switch status {
-//            case .authorizedAlways:
-//                print(status)
-//            case .authorizedWhenInUse:
-//                print(status)
-//            case .denied:
-//                print(status)
-//            case .notDetermined:
-//                print(status)
-//            case .restricted:
-//                print(status)
-//        default:
-//            print("LocationFetcher.swift: unknown \(status)")
-//        }
-        // Handle each case of location permissions
-        
         manager.requestWhenInUseAuthorization()
-        //manager.startUpdatingLocation()
         manager.requestLocation()
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -45,7 +26,6 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-               
         lastKnownLocation = locations.first?.coordinate
     }
 }

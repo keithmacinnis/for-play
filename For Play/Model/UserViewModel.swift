@@ -77,10 +77,8 @@ final class UserViewModel: ObservableObject {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
                 let errorMessage = error?.localizedDescription ?? "unknown error"
-                //print("In UserViewModel.PasswordResetRequest(): \(errorMessage)")
                 onError(errorMessage)
             } else {
-                //print("success")
                 onSuccess()
             }
         }

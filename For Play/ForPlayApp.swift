@@ -43,6 +43,7 @@ let gradient = AngularGradient(
     center: .center,
     startAngle: .degrees(0),
     endAngle: .degrees(360))
+
 enum ThreeActiveAlerts {
     case first
     case second
@@ -74,25 +75,3 @@ extension MKPointAnnotation {
         return annotation
     }
 }
-
-// extension Map {
-//    func mapViewDidChangeVisibleRegion(_ mapView: Map) {
-//        mapView.onTapGesture {
-//            mapView.
-//        }}
-// }
-//
-//    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-//    ////            if !mapView.showsUserLocation {
-//        mapView.userTrackingMode = MKUserTrackingMode.none
-//        print("Tracking now off")
-//    //            //  /   }
-//            }
-// }
-
-//        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-//            if !mapView.showsUserLocation {
-//                print("updating center cord")
-//                parent.centerCoordinate = mapView.centerCoordinate
-//            //  /   }
-//        }
