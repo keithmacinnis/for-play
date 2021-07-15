@@ -1,13 +1,13 @@
 //
-//  ActivityDetail.swift
+//  UserViewActivityDetail.swift
 //  For Play
 //
-//  Created by Keith MacInnis on 2021-04-21.
+//  Created by Keith MacInnis on 2021-07-14.
 //
 
 import SwiftUI
 
-struct ActivityDetail: View {
+struct UserViewActivityDetail: View {
     @EnvironmentObject var activityViewModel: ActivitiesViewModel
     @EnvironmentObject var user: UserViewModel
 
@@ -21,14 +21,14 @@ struct ActivityDetail: View {
         Text("title")
         Text(activity.title)
         Text("members")
-        List(activity.members, id: \.self) { dude in
-            Text(dude)
+        List(activity.members, id: \.self) { member in
+            Text(member)
                 .moveDisabled(true)
         }
         Button(action: {
-            activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID(), user: user)
+            activityViewModel.updateActivityByRemoval(activityUID: activity.id, userUID: user.getUID(), user: user)
         })
-            {Text("Join Activity")
+            {Text("Leave Activity")
                 .font(.headline)
                 .foregroundColor(.white)
                 .padding()
@@ -40,10 +40,3 @@ struct ActivityDetail: View {
         }.padding(.top, 50)
     }
 }
-
-struct ActivityDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityDetail(activity: Activity( id: "1", title: "String", authorUID: "asdfa"))
-    }
-}
-

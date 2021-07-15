@@ -22,6 +22,11 @@ final class ActivitiesViewModel: ObservableObject {
     func getUniqueIDforActivity() -> String {
         return db.collection("activities").document().documentID
     }
+    func findUsersActivties(userID: String) -> [Activity] {
+        return activities.filter { activity in
+            activity.members.contains(userID)
+        }
+    }
     func fetchActivties() {
         db.collection("activities").addSnapshotListener {  snapshot, error    in
             guard let activityDocuments = snapshot?.documents else {
@@ -34,20 +39,27 @@ final class ActivitiesViewModel: ObservableObject {
             print(self.activities)
         }
     }
-    func postActivity(title: String, authorUID: String, date: Date) {
+    func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel) {
         let ref = db.collection("activities").document()
         let activity = Activity(id: ref.documentID, title: title, authorUID: authorUID, members: [authorUID], date: date)
         do {
-            try ref.setData(from: activity) //db.collection("activities").addDocument(from: activity)
+            try ref.setData(from: activity)
         } catch let error {
             print("Error writing activity to Firestore: \(error)")
         }
+        user.addActivity(activityID: ref.documentID)
     }
-    func updateActivity(activityUID: String, userUID: String) {
-        let ref = db.collection("activities").document(activityUID)
-        print(activityUID)
-        ref.updateData([
+    func updateActivityByRemoval(activityUID: String, userUID: String, user: UserViewModel) {
+        db.collection("activities").document(activityUID).updateData([
+            "members": FieldValue.arrayRemove([userUID])
+        ])
+        user.removeActivity(activityID: activityUID)
+    }
+    //There are two locations to update; users table and actitivties table.
+    func updateActivity(activityUID: String, userUID: String, user: UserViewModel) {
+        db.collection("activities").document(activityUID).updateData([
             "members": FieldValue.arrayUnion([userUID])
         ])
+        user.addActivity(activityID: activityUID)
     }
 }

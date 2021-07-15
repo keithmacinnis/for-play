@@ -175,7 +175,7 @@ struct PostActivityView: View {
         activeAlert = .postWarning
     }
     func postActivity() {
-        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date )
+        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user)
         clearForm()
         self.parentsTab = .usersPage
     }

@@ -11,6 +11,8 @@
 		E30E7E9D2628BBF00043C16B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7E9C2628BBF00043C16B /* LoginView.swift */; };
 		E30E7EB02628C5480043C16B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EAF2628C5480043C16B /* UserViewModel.swift */; };
 		E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */; };
+		E32A7F75269F87DF0027FAF2 /* UserViewActivitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */; };
+		E32A7F79269FCE180027FAF2 /* UserViewActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */; };
 		E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* ForPlayApp.swift */; };
 		E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889C26280C6B007BCCE6 /* ContentView.swift */; };
 		E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E383889E26280C6E007BCCE6 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		E30E7E9C2628BBF00043C16B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E30E7EAF2628C5480043C16B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinUnlistedView.swift; sourceTree = "<group>"; };
+		E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivitiesList.swift; sourceTree = "<group>"; };
+		E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivityDetail.swift; sourceTree = "<group>"; };
 		E383889726280C6B007BCCE6 /* For Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "For Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E383889A26280C6B007BCCE6 /* ForPlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPlayApp.swift; sourceTree = "<group>"; };
 		E383889C26280C6B007BCCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				E3D26285263120A500ADCBE5 /* ActivtiesList.swift */,
 				E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */,
 				E3D2628F2631212F00ADCBE5 /* ActivityDetail.swift */,
+				E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */,
+				E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -299,10 +305,12 @@
 				E38388DF26280D5E007BCCE6 /* FavoriteButton.swift in Sources */,
 				E388113926350F9800276CFB /* UserView.swift in Sources */,
 				E30E7EB02628C5480043C16B /* UserViewModel.swift in Sources */,
+				E32A7F79269FCE180027FAF2 /* UserViewActivityDetail.swift in Sources */,
 				E3D262902631212F00ADCBE5 /* ActivityDetail.swift in Sources */,
 				E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */,
 				E3D2628D2631210C00ADCBE5 /* ActivityRow.swift in Sources */,
 				E38388F926281323007BCCE6 /* Activity.swift in Sources */,
+				E32A7F75269F87DF0027FAF2 /* UserViewActivitiesList.swift in Sources */,
 				E3D26286263120A500ADCBE5 /* ActivtiesList.swift in Sources */,
 				E3D2628326311A0300ADCBE5 /* ActivtiesViewModel.swift in Sources */,
 				E38388DE26280D5E007BCCE6 /* CircleImage.swift in Sources */,

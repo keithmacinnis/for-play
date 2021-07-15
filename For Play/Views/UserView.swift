@@ -27,14 +27,15 @@ struct UserView: View {
                 .padding(.bottom, 50)
             Spacer()
             VStack(alignment: .leading, spacing: 15) {
-                Button(action: {}) {
-                    Text("Your Activities")
-                        .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .padding()
-                    .background(Color.themeTextField)
-                    .cornerRadius(25.0)
-                    .shadow(radius: 10.0, x: 20, y: 10)
-                }
+                NavigationLink(destination: UserViewActivitiesList()) {
+                                            Text("Your Activities")
+                            .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .padding()
+                        .background(Color.themeTextField)
+                        .cornerRadius(25.0)
+                        .shadow(radius: 10.0, x: 20, y: 10)
+                    }
+                
                 NavigationLink( destination: JoinUnlistedView() ) {
                         Text("Join Unlisted")
                             .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

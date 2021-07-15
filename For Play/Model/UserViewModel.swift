@@ -9,12 +9,14 @@ import Combine
 import Foundation
 import FirebaseAuth
 import MapKit
-import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 final class UserViewModel: ObservableObject {
     //Store location ni homelocation to make fetching local lazyier
     @Published var loginState: LoginViewState = Auth.auth().currentUser !=  nil ? .showContent : .showLogin
-    
+    @Published var activities: [Activity] = []
+    var db: Firestore
     var uid: String?
     var email: String?
     var username: String?
@@ -26,17 +28,58 @@ final class UserViewModel: ObservableObject {
     
     init() {
         print("UserViewModel.swift init called for \(String(describing: uid))")
+        db = Firestore.firestore()
         handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
             } else {
                 print("User is nil (from user.swift)")
                 self.loginState = .showLogin
-                print(self.email)
             }
         }
         whereAmI.start()
     }
+    func fetchActivties(act: ActivitiesViewModel) {
+        activities = act.findUsersActivties(userID: uid ?? getUID())
+    }
+    func addSelf(){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.setData([
+            "id": uid
+        ])
+    }
+    func addActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "activities": FieldValue.arrayUnion([activityID])
+        ])
+    }
+    func removeActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "activities": FieldValue.arrayRemove([activityID])
+        ])
+    }
+//    func getActivties(){
+//        let uid = getUID()
+//        if uid != "error" {
+//            db.collection("users").document(uid).addSnapshotListener {  snapshot, error in
+//                guard let activityList = snapshot else {
+//                    print ("Error fetching: \(error)")
+//                    return
+//                }
+//                guard let documentsData = activityList.data() else {
+//                    print ("data empty")
+//                    return
+//                }
+//                let activityUIDs = documentsData
+//                print("\(activityUIDs)  ************** " )
+//            }
+//        }
+//    }
     
     func getLocation() -> MKCoordinateRegion {
         if let location = whereAmI.lastKnownLocation {
@@ -59,7 +102,7 @@ final class UserViewModel: ObservableObject {
             return CLLocationCoordinate2D()
         }
     }
-    func getUID ()-> String {
+    func getUID() -> String {
         if self.uid == nil {
             self.uid = Auth.auth().currentUser?.uid
         }
@@ -92,12 +135,14 @@ final class UserViewModel: ObservableObject {
             }
         }
     }
+    //Add user to auth on firebase auth, as well as users on firestorm
     func register(_ email: String,_ password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "error")
             } else {
                 print(result ?? "success")
+                self.addSelf()
             }
         }
     }
