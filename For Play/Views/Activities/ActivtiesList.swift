@@ -15,7 +15,7 @@ struct ActivtiesList: View {
     let zoomLevels: [String] = ["National","Provincial","Regional","Local"]
     
     var body: some View {
-        NavigationView {
+      //  NavigationView {
             List {
                 Stepper("", value: $zoomStepperValue, in: 0...3)
                 ForEach(viewModel.activities) { activity in
@@ -30,7 +30,7 @@ struct ActivtiesList: View {
             }
             .navigationTitle("\(zoomLevels[zoomStepperValue]) Activities")
         }
-    }
+   // }
     struct ActivtiesList_Previews: PreviewProvider {
         static var previews: some View {
             ActivtiesList()

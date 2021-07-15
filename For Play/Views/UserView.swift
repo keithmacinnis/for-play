@@ -12,7 +12,6 @@ struct UserView: View {
     @State var userName: String = "anonymous1"
     
     var body: some View {
-        NavigationView {
         VStack() {
             Image(systemName: "person.crop.circle")
                 .resizable()
@@ -56,7 +55,7 @@ struct UserView: View {
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
-        }.onAppear {
+        .onAppear {
             userName = user.getEmail()
         }
     }

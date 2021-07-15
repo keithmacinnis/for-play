@@ -15,7 +15,6 @@ struct UserViewActivitiesList: View {
     @State private var isShowing = false
     
     var body: some View {
-        NavigationView {
             List {
                 ForEach(userViewModel.activities) { activity in
                     NavigationLink(destination: UserViewActivityDetail(activity: activity)) {
@@ -28,8 +27,8 @@ struct UserViewActivitiesList: View {
                 self.isShowing = false
             }
             .navigationTitle("Your Activities")
-        }.onAppear() {
-            userViewModel.fetchActivties(act: activityViewModel)
-        }
+            .onAppear() {
+                userViewModel.fetchActivties(act: activityViewModel)
+            }
     }
 }
