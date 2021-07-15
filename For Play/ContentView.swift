@@ -17,23 +17,30 @@ struct ContentView: View {
     var body: some View {
         switch user.loginState {
             case .showContent:
-                TabView(selection: $selection) {
-                    PostActivityView(region: user.getLocation(), parentsTab: $selection)
-                        .tabItem {
-                            Label("Post", systemImage: "paperplane")
+                
+                    TabView(selection: $selection) {
+                        PostActivityView(region: user.getLocation(), parentsTab: $selection)
+                            .tabItem {
+                                Label("Post", systemImage: "paperplane")
+                            }
+                            .tag(Tab.post)
+                        NavigationView{
+                            UserView()
                         }
-                        .tag(Tab.post)
-                    UserView()
-                        .tabItem {
-                            Label("User", systemImage: "person")
+                            .tabItem {
+                                Label("User", systemImage: "person")
+                            }
+                            .tag(Tab.usersPage)
+                        NavigationView{
+                            ActivtiesList()
                         }
-                        .tag(Tab.usersPage)
-                    ActivtiesList()
                         .tabItem {
                             Label("Public", systemImage: "list.bullet.rectangle")
                         }
                         .tag(Tab.publicList)
-                }
+                        
+                    }
+                
             case .showLogin:
                 LoginView()
             case .showSignup:
