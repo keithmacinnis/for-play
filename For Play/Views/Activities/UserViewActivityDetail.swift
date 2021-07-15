@@ -6,25 +6,36 @@
 //
 
 import SwiftUI
-
+import MapKit
 struct UserViewActivityDetail: View {
     @EnvironmentObject var activityViewModel: ActivitiesViewModel
     @EnvironmentObject var user: UserViewModel
 
-
+    
+    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 420, longitudinalMeters: 420)
     let activity: Activity
+
     var body: some View {
-        Text("Author")
-        Text(activity.authorsUID)
-        Text("id")
-        Text(activity.id)
-        Text("title")
-        Text(activity.title)
-        Text("members")
-        List(activity.members, id: \.self) { member in
-            Text(member)
-                .moveDisabled(true)
-        }
+        ScrollView {
+            Map(coordinateRegion: $region, interactionModes: [] )
+                .frame(height: 300)
+                .ignoresSafeArea(edges: .top)
+            Image(systemName: "figure.walk.diamond.fill")
+            .offset(y: -130)
+            .padding(.bottom, -130)
+            Group{
+                Text("Author")
+                Text(activity.authorsUID)
+                Text("id")
+                Text(activity.id)
+                Text("title")
+                Text(activity.title)
+                Text("members")
+                List(activity.members, id: \.self) { dude in
+                    Text(dude)
+                        .moveDisabled(true)
+                }
+            }
         Button(action: {
             activityViewModel.updateActivityByRemoval(activityUID: activity.id, userUID: user.getUID(), user: user)
         })
@@ -38,5 +49,9 @@ struct UserViewActivityDetail: View {
                 .shadow(radius: 10.0, x: 20, y: 10)
                 .padding([.bottom],20)
         }.padding(.top, 50)
+        .onAppear() {
+        self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: activity.coordinates!.latitude, longitude: activity.coordinates!.longitude), latitudinalMeters: 420, longitudinalMeters: 420)
+        }
     }
+}
 }

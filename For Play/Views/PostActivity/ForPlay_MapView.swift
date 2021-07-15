@@ -15,6 +15,7 @@ struct ForPlay_MapView : View {
     @Binding var userTracking: MapUserTrackingMode
     @Binding var locations: [MKPointAnnotation]
     @Binding var eventLocation: String
+    @Binding var cordsOfEvent: Coordinates
     
     var body: some View {
         ZStack{
@@ -62,6 +63,7 @@ struct ForPlay_MapView : View {
             newLocation.coordinate = self.region.center
             self.locations.append(newLocation)
             let local: CLLocation = CLLocation(latitude: self.region.center.latitude , longitude: self.region.center.longitude)
+            cordsOfEvent = Coordinates(latitude: self.region.center.latitude , longitude: self.region.center.longitude)
             CLGeocoder().reverseGeocodeLocation(local) { (placemarks, error) in
                 guard error == nil else {
                     print("ReverseGeocode Error: \(String(describing: error))")

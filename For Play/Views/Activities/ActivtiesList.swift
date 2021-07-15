@@ -19,7 +19,7 @@ struct ActivtiesList: View {
             List {
                 Stepper("", value: $zoomStepperValue, in: 0...3)
                 ForEach(viewModel.activities) { activity in
-                    NavigationLink(destination: ActivityDetail(activity: activity)) {
+                    NavigationLink(destination: ActivityDetail(activity: activity )) {
                         ActivityRow(currentActivity: activity)
                     }
                 }

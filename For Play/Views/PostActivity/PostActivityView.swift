@@ -17,6 +17,7 @@ struct PostActivityView: View {
     
     @State private var locations = [MKPointAnnotation]()
     @State private var userTracking = MapUserTrackingMode.follow
+    @State private var cordsOfEvent = Coordinates(latitude: 0, longitude: 0)
     @State private var eventTitle = ""
     @State private var eventPassword = ""
     @State private var eventActivity = ""
@@ -90,7 +91,7 @@ struct PostActivityView: View {
                         .foregroundColor(.black)
                         .cornerRadius(25.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
-                    ForPlay_MapView(region: $region, userTracking: $userTracking, locations: $locations, eventLocation: $eventLocation)
+                    ForPlay_MapView(region: $region, userTracking: $userTracking, locations: $locations, eventLocation: $eventLocation, cordsOfEvent: $cordsOfEvent)
                     TextEditor(text: self.$eventLocation)
                         .frame(height: 48)
                         .padding()
@@ -175,7 +176,7 @@ struct PostActivityView: View {
         activeAlert = .postWarning
     }
     func postActivity() {
-        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user)
+        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user, cordsOfEvent: self.cordsOfEvent)
         clearForm()
         self.parentsTab = .usersPage
     }

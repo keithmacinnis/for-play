@@ -66,6 +66,10 @@ enum Tab {
     case publicList
 }
 
+struct Coordinates: Hashable, Codable {
+    var latitude: Double
+    var longitude: Double
+}
 extension MKPointAnnotation {
     static var example: MKPointAnnotation {
         let annotation = MKPointAnnotation()

@@ -6,44 +6,51 @@
 //
 
 import SwiftUI
-
+import MapKit
 struct ActivityDetail: View {
     @EnvironmentObject var activityViewModel: ActivitiesViewModel
     @EnvironmentObject var user: UserViewModel
-
-
+    
+    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 420, longitudinalMeters: 420)
     let activity: Activity
+
     var body: some View {
-        Text("Author")
-        Text(activity.authorsUID)
-        Text("id")
-        Text(activity.id)
-        Text("title")
-        Text(activity.title)
-        Text("members")
-        List(activity.members, id: \.self) { dude in
-            Text(dude)
-                .moveDisabled(true)
+        ScrollView {
+            Text("Title: \(activity.title)")
+                .bold()
+            Map(coordinateRegion: $region, interactionModes: [] )
+                .frame(height: 300)
+            Image(systemName: "figure.walk.diamond.fill")
+            .offset(y: -130)
+            .padding(.bottom, -130)
+                .accentColor(.yellow)
+            Group{
+                Text("Author")
+                Text(activity.authorsUID)
+                Text("id")
+                Text(activity.id)
+                Text("members")
+                List(activity.members, id: \.self) { dude in
+                    Text(dude)
+                        .moveDisabled(true)
+                }
+            }
+            Button(action: {
+                activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID(), user: user)
+            })
+                {Text("Join Activity")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.green)
+                    .cornerRadius(25.0)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+                    .padding([.bottom],20)
+            }.padding(.top, 50)
+            .onAppear() {
+            self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: activity.coordinates!.latitude, longitude: activity.coordinates!.longitude), latitudinalMeters: 420, longitudinalMeters: 420)
+            }
         }
-        Button(action: {
-            activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID(), user: user)
-        })
-            {Text("Join Activity")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 300, height: 50)
-                .background(Color.green)
-                .cornerRadius(25.0)
-                .shadow(radius: 10.0, x: 20, y: 10)
-                .padding([.bottom],20)
-        }.padding(.top, 50)
     }
 }
-
-struct ActivityDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityDetail(activity: Activity( id: "1", title: "String", authorUID: "asdfa"))
-    }
-}
-

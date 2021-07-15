@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Activity: Hashable, Codable, Identifiable {
     
@@ -14,6 +15,7 @@ struct Activity: Hashable, Codable, Identifiable {
     var authorsUID: String
     var members: [String]
     var date: Date?
+    var coordinates: Coordinates?
     
     init( id: String, title: String, authorUID: String){
         self.id = id
@@ -28,12 +30,13 @@ struct Activity: Hashable, Codable, Identifiable {
         self = activity
         self.setId(id: newId)
     }
-    init(id: String, title: String, authorUID: String, members: [String], date: Date){
+    init(id: String, title: String, authorUID: String, members: [String], date: Date, coordinates: Coordinates){
         self.id = id
         self.title = title
         self.authorsUID = authorUID
         self.members = members
         self.date = date
+        self.coordinates = coordinates
     }
     mutating func setId(id: String) {
         self.id = id

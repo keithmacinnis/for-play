@@ -178,8 +178,8 @@
             filePath = "For Play/Views/UserView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -194,8 +194,8 @@
             filePath = "For Play/Views/UserView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -212,7 +212,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "postActivity(title:authorUID:date:user:)"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -226,8 +226,8 @@
             filePath = "For Play/Model/Activity.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "Activity"
             landmarkType = "14">
          </BreakpointContent>
@@ -244,7 +244,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "postActivity(title:authorUID:date:user:)"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

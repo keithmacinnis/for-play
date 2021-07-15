@@ -39,9 +39,9 @@ final class ActivitiesViewModel: ObservableObject {
             print(self.activities)
         }
     }
-    func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel) {
+    func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel, cordsOfEvent: Coordinates) {
         let ref = db.collection("activities").document()
-        let activity = Activity(id: ref.documentID, title: title, authorUID: authorUID, members: [authorUID], date: date)
+        let activity = Activity(id: ref.documentID, title: title, authorUID: authorUID, members: [authorUID], date: date, coordinates: cordsOfEvent)
         do {
             try ref.setData(from: activity)
         } catch let error {
