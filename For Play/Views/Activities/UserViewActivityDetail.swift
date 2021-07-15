@@ -17,6 +17,8 @@ struct UserViewActivityDetail: View {
 
     var body: some View {
         ScrollView {
+            Text("Title: \(activity.title)")
+                .bold()
             Map(coordinateRegion: $region, interactionModes: [] )
                 .frame(height: 300)
                 .ignoresSafeArea(edges: .top)
@@ -28,27 +30,53 @@ struct UserViewActivityDetail: View {
                 Text(activity.authorsUID)
                 Text("id")
                 Text(activity.id)
-                Text("title")
-                Text(activity.title)
                 Text("members")
                 List(activity.members, id: \.self) { dude in
                     Text(dude)
                         .moveDisabled(true)
                 }
             }
+        Group{
+        Button(action: {
+            print("TODO: open chat ")
+        })
+        {Text("Chat")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 300, height: 50)
+            .background(Color.green)
+            .cornerRadius(25.0)
+            .shadow(radius: 10.0, x: 20, y: 10)
+            .padding([.bottom],20)
+        }.padding(.top, 50)
+        Button(action: {
+            print("TODO: open directions in native map app")
+        })
+        {Text("Directions")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 300, height: 50)
+            .background(Color.green)
+            .cornerRadius(25.0)
+            .shadow(radius: 10.0, x: 20, y: 10)
+            .padding([.bottom],20)
+        }
         Button(action: {
             activityViewModel.updateActivityByRemoval(activityUID: activity.id, userUID: user.getUID(), user: user)
         })
-            {Text("Leave Activity")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 300, height: 50)
-                .background(Color.green)
-                .cornerRadius(25.0)
-                .shadow(radius: 10.0, x: 20, y: 10)
-                .padding([.bottom],20)
-        }.padding(.top, 50)
+        {Text("Leave Activity")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 300, height: 50)
+            .background(Color.green)
+            .cornerRadius(25.0)
+            .shadow(radius: 10.0, x: 20, y: 10)
+            .padding([.bottom],20)
+        }
+        }
         .onAppear() {
         self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: activity.coordinates!.latitude, longitude: activity.coordinates!.longitude), latitudinalMeters: 420, longitudinalMeters: 420)
         }
