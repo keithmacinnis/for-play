@@ -7,11 +7,11 @@
 
 import SwiftUI
 import MapKit
+import StreamChat
 struct UserViewActivityDetail: View {
-    @EnvironmentObject var activityViewModel: ActivitiesViewModel
+    @EnvironmentObject var avm: ActivitiesViewModel
     @EnvironmentObject var user: UserViewModel
-
-        
+    
     @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 420, longitudinalMeters: 420)
     let activity: Activity
 
@@ -37,7 +37,7 @@ struct UserViewActivityDetail: View {
                 }
             }
     Group{
-        NavigationLink( destination: ChatView() ) {
+        NavigationLink(destination: ChatView(channel: avm.getActivityChatChannel(channelName: activity.id))) {
             Text("Chat")
                 .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .padding()
@@ -59,7 +59,7 @@ struct UserViewActivityDetail: View {
             .padding([.bottom],20)
         }
         Button(action: {
-            activityViewModel.updateActivityByRemoval(activityUID: activity.id, userUID: user.getUID(), user: user)
+            avm.updateActivityByRemoval(activityUID: activity.id, userUID: user.getUID(), user: user)
         })
         {Text("Leave Activity")
             .font(.headline)

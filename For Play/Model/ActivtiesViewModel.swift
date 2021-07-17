@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import StreamChat
 
 final class ActivitiesViewModel: ObservableObject {
     var db: Firestore
@@ -61,5 +62,14 @@ final class ActivitiesViewModel: ObservableObject {
             "members": FieldValue.arrayUnion([userUID])
         ])
         user.addActivity(activityID: activityUID)
+    }
+    
+    func getActivityChatChannel(channelName : String) -> ChatChannelController.ObservableObject {
+        return ChatClient.shared.channelController(
+                for: ChannelId(
+                    type: .messaging,
+                    id:  channelName
+                )
+            ).observableObject
     }
 }

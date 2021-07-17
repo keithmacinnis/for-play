@@ -9,13 +9,13 @@ import SwiftUI
 import StreamChat
 
 struct ChatView: View {
-    
-    @StateObject var channel = ChatClient.shared.channelController(
-        for: ChannelId(
-            type: .messaging,
-            id: "general"
-        )
-    ).observableObject
+    @StateObject var channel: ChatChannelController.ObservableObject
+//    StateObject var channel = ChatClient.shared.channelController(
+//        for: ChannelId(
+//            type: .messaging,
+//            id:  "chan"
+//        )
+//    ).observableObject
     @State var text: String = ""
     var body: some View {
         VStack {
@@ -50,9 +50,9 @@ struct ChatView: View {
             self.text = ""
         }
     }
-
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-    }
-}
+//
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatView()
+//    }
+//}
