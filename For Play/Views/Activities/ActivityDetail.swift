@@ -18,12 +18,15 @@ struct ActivityDetail: View {
         ScrollView {
             Text("Title: \(activity.title)")
                 .bold()
-            Map(coordinateRegion: $region, interactionModes: [] )
-                .frame(height: 300)
-            Image(systemName: "figure.walk.diamond.fill")
-            .offset(y: -130)
-            .padding(.bottom, -130)
-                .accentColor(.yellow)
+            VStack {
+                Spacer()
+                Map(coordinateRegion: $region, interactionModes: [] )
+                    .frame(height: 300)
+                    .padding(.bottom, -130)
+                Image(systemName: "figure.walk.diamond.fill")
+                    .foregroundColor(Color.blue.opacity(0.75))
+                Spacer()
+            }
             Group{
                 Text("Author")
                 Text(activity.authorsUID)
