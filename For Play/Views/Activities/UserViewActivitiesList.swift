@@ -23,12 +23,12 @@ struct UserViewActivitiesList: View {
                 }
             }
             .pullToRefresh(isShowing: $isShowing) {
-                userViewModel.fetchActivties(act: activityViewModel)
+                userViewModel.fetchActivties(avm: activityViewModel)
                 self.isShowing = false
             }
             .navigationTitle("Your Activities")
             .onAppear() {
-                userViewModel.fetchActivties(act: activityViewModel)
+                userViewModel.fetchActivties(avm: activityViewModel)
             }
     }
 }

@@ -25,6 +25,9 @@
 		E38811412635378E00276CFB /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38811402635378E00276CFB /* LocationFetcher.swift */; };
 		E38A2F692630ABD1007D65C4 /* PostActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A2F682630ABD1007D65C4 /* PostActivityView.swift */; };
 		E3BCF941262822A400768BEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3BCF940262822A400768BEA /* GoogleService-Info.plist */; };
+		E3C6616C26A36A3C0035A90F /* StreamChatAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3C6616B26A36A3C0035A90F /* StreamChatAPI.plist */; };
+		E3C6616E26A373F60035A90F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6616D26A373F60035A90F /* ChatView.swift */; };
+		E3C6617026A37A3D0035A90F /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6616F26A37A3D0035A90F /* MessageView.swift */; };
 		E3D2628326311A0300ADCBE5 /* ActivtiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D2628226311A0300ADCBE5 /* ActivtiesViewModel.swift */; };
 		E3D26286263120A500ADCBE5 /* ActivtiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26285263120A500ADCBE5 /* ActivtiesList.swift */; };
 		E3D2628D2631210C00ADCBE5 /* ActivityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */; };
@@ -53,6 +56,9 @@
 		E38811402635378E00276CFB /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		E38A2F682630ABD1007D65C4 /* PostActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActivityView.swift; sourceTree = "<group>"; };
 		E3BCF940262822A400768BEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3C6616B26A36A3C0035A90F /* StreamChatAPI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = StreamChatAPI.plist; sourceTree = "<group>"; };
+		E3C6616D26A373F60035A90F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		E3C6616F26A37A3D0035A90F /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		E3D2628226311A0300ADCBE5 /* ActivtiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivtiesViewModel.swift; sourceTree = "<group>"; };
 		E3D26285263120A500ADCBE5 /* ActivtiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivtiesList.swift; sourceTree = "<group>"; };
 		E3D2628C2631210C00ADCBE5 /* ActivityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRow.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 				E383889E26280C6E007BCCE6 /* Assets.xcassets */,
 				E3BCF940262822A400768BEA /* GoogleService-Info.plist */,
 				E38388A326280C6E007BCCE6 /* Info.plist */,
+				E3C6616B26A36A3C0035A90F /* StreamChatAPI.plist */,
 				E38388A026280C6E007BCCE6 /* Preview Content */,
 			);
 			path = "For Play";
@@ -136,6 +143,8 @@
 			children = (
 				E378A699269211D900695471 /* PostActivity */,
 				E388113826350F9800276CFB /* UserView.swift */,
+				E3C6616D26A373F60035A90F /* ChatView.swift */,
+				E3C6616F26A37A3D0035A90F /* MessageView.swift */,
 				E30E7E9C2628BBF00043C16B /* LoginView.swift */,
 				E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */,
 				E38388B126280D5D007BCCE6 /* Activities */,
@@ -246,6 +255,7 @@
 				E38388A226280C6E007BCCE6 /* Preview Assets.xcassets in Resources */,
 				E3BCF941262822A400768BEA /* GoogleService-Info.plist in Resources */,
 				E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */,
+				E3C6616C26A36A3C0035A90F /* StreamChatAPI.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3C6616E26A373F60035A90F /* ChatView.swift in Sources */,
 				E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */,
 				E388113C26351FAC00276CFB /* ForPlay_MapView.swift in Sources */,
 				E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */,
+				E3C6617026A37A3D0035A90F /* MessageView.swift in Sources */,
 				E30E7E9D2628BBF00043C16B /* LoginView.swift in Sources */,
 				E38388DF26280D5E007BCCE6 /* FavoriteButton.swift in Sources */,
 				E388113926350F9800276CFB /* UserView.swift in Sources */,

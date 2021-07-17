@@ -8,16 +8,31 @@
 import SwiftUI
 import Firebase
 import MapKit
-infix operator ++: AdditionPrecedence
+import StreamChat
 
 @main
 struct ForPlayApp: App {
     @StateObject private var activityData = ActivitiesViewModel()
     @StateObject private var user = UserViewModel()
-
+    private var streamChatAPIKey: String {
+      get {
+        guard let filePath = Bundle.main.path(forResource: "StreamChatAPI", ofType: "plist") else {
+          fatalError("Couldn't find file 'StreamChatAPI.plist'.")
+        }
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "api_key") as? String else {
+          fatalError("Couldn't find key api_key in 'StreamChatAPI.plist'.")
+        }
+        return value
+      }
+    }
     init() {
         FirebaseApp.configure()
+        let chatConfig = ChatClientConfig(apiKeyString: streamChatAPIKey)
+        ChatClient.shared = ChatClient(config: chatConfig, tokenProvider: .anonymous)
+        //UI Enhancements
         UITextView.appearance().backgroundColor = .clear
+        UITableView.appearance().separatorStyle = .none
     }
     var body: some Scene {
         WindowGroup {
@@ -28,15 +43,16 @@ struct ForPlayApp: App {
     }
 }
 
+extension ChatClient {
+    static var shared: ChatClient!
+}
+
 extension Color {
     static var themeTextField: Color {
         return Color(red: 220.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, opacity: 1.0)
     }
 }
 
-postfix func ++ <T: Numeric> (incremtee: T) -> T {
-    return incremtee+1
-}
 
 let gradient = AngularGradient(
     gradient: Gradient(colors: [.green, .blue]),

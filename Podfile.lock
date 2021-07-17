@@ -304,6 +304,9 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - Starscream (4.0.4)
+  - StreamChat (3.1.11):
+    - Starscream (~> 4.0)
   - SwiftUIRefresh (0.0.3):
     - Introspect (~> 0.1.0)
 
@@ -311,6 +314,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - StreamChat (~> 3.1)
   - SwiftUIRefresh
 
 SPEC REPOS:
@@ -332,6 +336,8 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - Starscream
+    - StreamChat
     - SwiftUIRefresh
 
 SPEC CHECKSUMS:
@@ -352,8 +358,10 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  StreamChat: 33f3925e247e3d5acef724fecf5fcf318f81c10f
   SwiftUIRefresh: ca6ae2718d25aad5dd68bbf5d2ae36ef6ade98bf
 
-PODFILE CHECKSUM: 8643f89bf6ee6f321173e9c16feb3fe3a5a22f3e
+PODFILE CHECKSUM: a771697cc219f36d6db75f15a8aa87a142e076a3
 
 COCOAPODS: 1.10.1

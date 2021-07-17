@@ -4,11 +4,11 @@
 //
 //  Created by Keith MacInnis on 2021-04-15.
 //
-
+import MapKit
 import Combine
+import StreamChat
 import Foundation
 import FirebaseAuth
-import MapKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -32,15 +32,21 @@ final class UserViewModel: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
+                self.configureChatClient()
             } else {
                 print("User is nil (from user.swift)")
                 self.loginState = .showLogin
             }
         }
         whereAmI.start()
+        
     }
-    func fetchActivties(act: ActivitiesViewModel) {
-        activities = act.findUsersActivties(userID: uid ?? getUID())
+    func configureChatClient() {
+        ChatClient.shared.tokenProvider = .development(userId: getUID())
+        ChatClient.shared.currentUserController().reloadUserIfNeeded()
+    }
+    func fetchActivties(avm: ActivitiesViewModel) {
+        activities = avm.findUsersActivties(userID: uid ?? getUID())
     }
     func addSelf(){
         let uid = getUID()
@@ -63,23 +69,6 @@ final class UserViewModel: ObservableObject {
             "activities": FieldValue.arrayRemove([activityID])
         ])
     }
-//    func getActivties(){
-//        let uid = getUID()
-//        if uid != "error" {
-//            db.collection("users").document(uid).addSnapshotListener {  snapshot, error in
-//                guard let activityList = snapshot else {
-//                    print ("Error fetching: \(error)")
-//                    return
-//                }
-//                guard let documentsData = activityList.data() else {
-//                    print ("data empty")
-//                    return
-//                }
-//                let activityUIDs = documentsData
-//                print("\(activityUIDs)  ************** " )
-//            }
-//        }
-//    }
     
     func getLocation() -> MKCoordinateRegion {
         if let location = whereAmI.lastKnownLocation {
