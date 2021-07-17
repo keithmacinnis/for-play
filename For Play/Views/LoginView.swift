@@ -28,7 +28,6 @@ struct LoginView: View {
         endAngle: .degrees(360))
     
     var body: some View {
-    ScrollView(){
         if (!newUserSignup) {
         VStack() {
             Text("For Play")
@@ -179,7 +178,6 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all))
     }
     }
-}
 }
 
 struct Login_Previews: PreviewProvider {

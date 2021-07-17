@@ -11,7 +11,7 @@ struct UserViewActivityDetail: View {
     @EnvironmentObject var activityViewModel: ActivitiesViewModel
     @EnvironmentObject var user: UserViewModel
 
-    
+        
     @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 420, longitudinalMeters: 420)
     let activity: Activity
 
@@ -76,6 +76,6 @@ struct UserViewActivityDetail: View {
             self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: activity.coordinates!.latitude, longitude: activity.coordinates!.longitude), latitudinalMeters: 420, longitudinalMeters: 420)
             self.user.configureChatClient()
         }
-    }
+        }.navigationTitle(activity.title)
 }
 }

@@ -58,5 +58,6 @@ struct UserView: View {
         .onAppear {
             userName = user.getEmail()
         }
+        .navigationTitle(userName)
     }
 }

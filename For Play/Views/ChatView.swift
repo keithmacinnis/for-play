@@ -9,10 +9,11 @@ import SwiftUI
 import StreamChat
 
 struct ChatView: View {
+    
     @StateObject var channel = ChatClient.shared.channelController(
         for: ChannelId(
             type: .messaging,
-            id: "G Chat"
+            id: "general"
         )
     ).observableObject
     @State var text: String = ""
