@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 struct Activity: Hashable, Codable, Identifiable {
     
@@ -25,6 +26,10 @@ struct Activity: Hashable, Codable, Identifiable {
     }
     init(activity: Activity) {
         self = activity
+    }
+    func getLocation() -> MKCoordinateRegion {
+        let center = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
+        return MKCoordinateRegion(center: center, latitudinalMeters: 420, longitudinalMeters: 420)
     }
     init(activity: Activity, newId: String) {
         self = activity

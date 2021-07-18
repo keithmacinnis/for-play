@@ -226,8 +226,8 @@
             filePath = "For Play/Model/Activity.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "Activity"
             landmarkType = "14">
          </BreakpointContent>
@@ -342,54 +342,6 @@
             endingLineNumber = "26"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "97B1F883-82C7-493E-BFDC-035BBE14D3D9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "For Play/Views/Activities/UserViewActivityDetail.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "UserViewActivityDetail"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "97B1F883-82C7-493E-BFDC-035BBE14D3D9 - af1f5bb2af59c74c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "For_Play.UserViewActivityDetail.avm.getter : For_Play.ActivitiesViewModel"
-                  moduleName = "For Play"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/keithmacinnis/dev/For%20Play/For%20Play/Views/Activities/UserViewActivityDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "98">
-               </Location>
-               <Location
-                  uuid = "97B1F883-82C7-493E-BFDC-035BBE14D3D9 - afc544c1b401a4a1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "For_Play.UserViewActivityDetail.$avm.getter : SwiftUI.EnvironmentObject&lt;For_Play.ActivitiesViewModel&gt;.Wrapper"
-                  moduleName = "For Play"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/keithmacinnis/dev/For%20Play/For%20Play/Views/Activities/UserViewActivityDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "98">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
