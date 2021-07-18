@@ -30,15 +30,15 @@ struct UserViewActivityDetail: View {
             }
             Group{
             NavigationLink(destination: ChatView(channel: avm.getActivityChatChannel(channelName: activity.id))) {
-            Text("Chat")
-                .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .padding()
-                .background(Color.themeTextField)
-                .cornerRadius(25.0)
-                .shadow(radius: 10.0, x: 20, y: 10)
-            }
+                Text("Chat")
+                    .frame(width: 200, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .padding()
+                    .background(Color.themeTextField)
+                    .cornerRadius(25.0)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+                }
             Button(action: {
-                print("TODO: open directions in native map app")
+                activity.openMeInNativeMapApp()
             })
             {Text("Directions")
                 .font(.headline)
