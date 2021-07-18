@@ -27,10 +27,6 @@ struct Activity: Hashable, Codable, Identifiable {
     init(activity: Activity) {
         self = activity
     }
-    func getLocation() -> MKCoordinateRegion {
-        let center = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
-        return MKCoordinateRegion(center: center, latitudinalMeters: 420, longitudinalMeters: 420)
-    }
     init(activity: Activity, newId: String) {
         self = activity
         self.setId(id: newId)
@@ -42,6 +38,17 @@ struct Activity: Hashable, Codable, Identifiable {
         self.members = members
         self.date = date
         self.coordinates = coordinates
+    }
+    func getLocation() -> MKCoordinateRegion {
+        let center = CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude)
+        return MKCoordinateRegion(center: center, latitudinalMeters: 420, longitudinalMeters: 420)
+    }
+    func getPlacemark() -> MKPlacemark {
+        return MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: coordinates!.latitude, longitude: coordinates!.longitude))
+    }
+    func openMeInNativeMapApp() {
+        let mapItem = MKMapItem(placemark: getPlacemark())
+        mapItem.openInMaps(launchOptions: nil)
     }
     mutating func setId(id: String) {
         self.id = id
