@@ -14,6 +14,7 @@
 		E32A7F75269F87DF0027FAF2 /* UserViewActivitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */; };
 		E32A7F79269FCE180027FAF2 /* UserViewActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */; };
 		E37FE36326A4967A0007BE2C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E37FE36226A4967A0007BE2C /* Launch Screen.storyboard */; };
+		E37FE36526A52F040007BE2C /* Silverfake-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E37FE36426A52F040007BE2C /* Silverfake-Regular.ttf */; };
 		E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* ForPlayApp.swift */; };
 		E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889C26280C6B007BCCE6 /* ContentView.swift */; };
 		E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E383889E26280C6E007BCCE6 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivitiesList.swift; sourceTree = "<group>"; };
 		E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivityDetail.swift; sourceTree = "<group>"; };
 		E37FE36226A4967A0007BE2C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E37FE36426A52F040007BE2C /* Silverfake-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Silverfake-Regular.ttf"; sourceTree = "<group>"; };
 		E383889726280C6B007BCCE6 /* For Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "For Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E383889A26280C6B007BCCE6 /* ForPlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPlayApp.swift; sourceTree = "<group>"; };
 		E383889C26280C6B007BCCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				E38388AB26280D5D007BCCE6 /* Views */,
 				E383889E26280C6E007BCCE6 /* Assets.xcassets */,
 				E3BCF940262822A400768BEA /* GoogleService-Info.plist */,
+				E37FE36426A52F040007BE2C /* Silverfake-Regular.ttf */,
 				E38388A326280C6E007BCCE6 /* Info.plist */,
 				E3C6616B26A36A3C0035A90F /* StreamChatAPI.plist */,
 				E38388A026280C6E007BCCE6 /* Preview Content */,
@@ -260,6 +263,7 @@
 				E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */,
 				E37FE36326A4967A0007BE2C /* Launch Screen.storyboard in Resources */,
 				E3C6616C26A36A3C0035A90F /* StreamChatAPI.plist in Resources */,
+				E37FE36526A52F040007BE2C /* Silverfake-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

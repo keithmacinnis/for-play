@@ -46,7 +46,17 @@ final class UserViewModel: ObservableObject {
         ChatClient.shared.currentUserController().reloadUserIfNeeded()
     }
     func fetchActivties(avm: ActivitiesViewModel) {
+        fetchPrivateActivties()
         activities = avm.findUsersActivties(userID: uid ?? getUID())
+    }
+    func fetchPrivateActivties() {
+        let ref = db.collection("users").document(getUID())
+        ref.getDocument { doc, err in
+            let dict = doc!.data()
+            print("test :")
+            print(dict!["id"])
+            print("fetched private")
+        }
     }
     func addSelf(){
         let uid = getUID()
@@ -62,11 +72,25 @@ final class UserViewModel: ObservableObject {
             "activities": FieldValue.arrayUnion([activityID])
         ])
     }
+    func addPrivateActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "privateActivities": FieldValue.arrayUnion([activityID])
+        ])
+    }
     func removeActivity(activityID: String){
         let uid = getUID()
         let ref = db.collection("users").document(uid)
         ref.updateData([
             "activities": FieldValue.arrayRemove([activityID])
+        ])
+    }
+    func removePrivateActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "privateActivities": FieldValue.arrayRemove([activityID])
         ])
     }
     

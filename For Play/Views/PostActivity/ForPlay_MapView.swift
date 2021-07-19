@@ -35,6 +35,11 @@ struct ForPlay_MapView : View {
             HStack {
                 Spacer()
                 VStack {
+                    HStack{
+                    Spacer()
+                        Text("Lat: \(self.region.center.latitude), Lon: \(self.region.center.longitude)").font(Font.custom("SF Mono Regular", size: 11)).foregroundColor(.black).fontWeight(.bold)
+                    Spacer()
+                    }
                 Spacer()
                 HStack(){
                     VStack(){
@@ -94,10 +99,12 @@ struct ForPlay_MapView : View {
                     if firstPlacemark.postalCode != nil {
                         addressString = addressString + firstPlacemark.postalCode! + ", "
                     }
-                    if firstPlacemark.region != nil {
-                        addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
-                    }
-                    self.eventLocation = addressString
+//                    if firstPlacemark.region != nil {
+//                        addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
+//                    }
+                
+                    self.eventLocation = String(addressString.dropLast(2))
+
                 }
             }
         }

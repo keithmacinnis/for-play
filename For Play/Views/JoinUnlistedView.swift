@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct JoinUnlistedView: View {
-    
+    @EnvironmentObject var avm: ActivitiesViewModel
+    @EnvironmentObject var user: UserViewModel
     @State private var eventTitle = ""
     @State private var eventPassword = ""
     
@@ -42,7 +43,9 @@ struct JoinUnlistedView: View {
                     .shadow(radius: 10.0, x: 20, y: 10)
                 
             }.padding([.leading, .trailing], 50)
-            Button(action: {}) {
+            Button(action: {
+                avm.validatePasswordTitlePair(title: eventTitle, password: eventPassword, user: user)
+            }) {
                 Text("Join Unlisted Activity")
                     .font(.headline)
                     .foregroundColor(.white)
