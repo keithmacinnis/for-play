@@ -29,6 +29,7 @@ struct LoginView: View {
     
     var body: some View {
         if (!newUserSignup) {
+            ScrollView{
         VStack() {
             Text("For Play")
                 .font(.largeTitle).foregroundColor(Color.white)
@@ -117,8 +118,10 @@ struct LoginView: View {
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
+        }
         
     } else {
+        ScrollView{
         VStack() {
             Text("For Play")
                 .font(.largeTitle).foregroundColor(Color.white)
@@ -176,6 +179,7 @@ struct LoginView: View {
         .background(
             LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
+    }
     }
     }
 }

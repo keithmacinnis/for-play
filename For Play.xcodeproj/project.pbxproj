@@ -13,6 +13,7 @@
 		E30E7EC22630981E0043C16B /* JoinUnlistedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */; };
 		E32A7F75269F87DF0027FAF2 /* UserViewActivitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */; };
 		E32A7F79269FCE180027FAF2 /* UserViewActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */; };
+		E37FE36326A4967A0007BE2C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E37FE36226A4967A0007BE2C /* Launch Screen.storyboard */; };
 		E383889B26280C6B007BCCE6 /* ForPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889A26280C6B007BCCE6 /* ForPlayApp.swift */; };
 		E383889D26280C6B007BCCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E383889C26280C6B007BCCE6 /* ContentView.swift */; };
 		E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E383889E26280C6E007BCCE6 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		E30E7EC12630981E0043C16B /* JoinUnlistedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinUnlistedView.swift; sourceTree = "<group>"; };
 		E32A7F74269F87DF0027FAF2 /* UserViewActivitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivitiesList.swift; sourceTree = "<group>"; };
 		E32A7F78269FCE180027FAF2 /* UserViewActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewActivityDetail.swift; sourceTree = "<group>"; };
+		E37FE36226A4967A0007BE2C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E383889726280C6B007BCCE6 /* For Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "For Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E383889A26280C6B007BCCE6 /* ForPlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForPlayApp.swift; sourceTree = "<group>"; };
 		E383889C26280C6B007BCCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		E383888E26280C6B007BCCE6 = {
 			isa = PBXGroup;
 			children = (
+				E37FE36226A4967A0007BE2C /* Launch Screen.storyboard */,
 				E383889926280C6B007BCCE6 /* For Play */,
 				E383889826280C6B007BCCE6 /* Products */,
 				180EC7E82F9116B69FDBED4E /* Pods */,
@@ -255,6 +258,7 @@
 				E38388A226280C6E007BCCE6 /* Preview Assets.xcassets in Resources */,
 				E3BCF941262822A400768BEA /* GoogleService-Info.plist in Resources */,
 				E383889F26280C6E007BCCE6 /* Assets.xcassets in Resources */,
+				E37FE36326A4967A0007BE2C /* Launch Screen.storyboard in Resources */,
 				E3C6616C26A36A3C0035A90F /* StreamChatAPI.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -440,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -466,6 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keithmacinnis.For-Play";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -489,6 +494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.keithmacinnis.For-Play";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
