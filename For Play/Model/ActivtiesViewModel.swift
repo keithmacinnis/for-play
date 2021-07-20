@@ -25,10 +25,35 @@ final class ActivitiesViewModel: ObservableObject {
         return db.collection("activities").document().documentID
     }
     func findUsersActivties(userID: String) -> [Activity] {
-        
         return activities.filter { activity in
             activity.members.contains(userID)
         }
+    }
+    func fetchAcitvity(id : String, table: String) -> Activity? {
+        var ret : Activity?
+        let ref = db.collection(table).document(id)
+        print("step1.1")
+        ref.getDocument { document, error in
+            let result = Result {
+              try document?.data(as: Activity.self)
+            }
+            switch result {
+              case .success(let activity):
+                  if let activity = activity {
+                        // A `activity` value was successfully initialized from the DocumentSnapshot.
+                        print("Activity: \(activity)")
+                        print("step1.2")
+                        ret = activity
+                  } else {
+                      // A nil value was successfully initialized from the DocumentSnapshot, or the DocumentSnapshot was nil.
+                      print("Document does not exist")
+                  }
+              case .failure(let error):
+                  // A `activity` value could not be initialized from the DocumentSnapshot.
+                  print("Error decoding user: \(error)")
+              }
+        }
+        return ret ?? nil
     }
     func fetchActivties() {
         db.collection("activities").addSnapshotListener {  snapshot, error    in
@@ -53,7 +78,11 @@ final class ActivitiesViewModel: ObservableObject {
         } catch let error {
             print("Error writing activity to Firestore: \(error)")
         }
-        user.addActivity(activityID: ref.documentID)
+        if isPrivate {
+            user.addPrivateActivity(activityID: ref.documentID)
+        } else {
+            user.addActivity(activityID: ref.documentID)
+        }
     }
     func updateActivityByRemoval(activityUID: String, userUID: String, user: UserViewModel) {
         db.collection("activities").document(activityUID).updateData([
