@@ -17,7 +17,6 @@ struct ContentView: View {
     var body: some View {
         switch user.loginState {
             case .showContent:
-                
                     TabView(selection: $selection) {
                         PostActivityView(region: user.getLocation(), parentsTab: $selection)
                             .tabItem {

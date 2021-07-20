@@ -14,7 +14,7 @@ import StreamChat
 final class ActivitiesViewModel: ObservableObject {
     var db: Firestore
     @Published var activities: [Activity] = []
-    private var privateActivities: [Activity] = []
+    @Published var filteredActivities: [Activity] = []
     
     init() {
         print("ActivitiesViewModel.swift init called")
@@ -24,15 +24,27 @@ final class ActivitiesViewModel: ObservableObject {
     func getUniqueIDforActivity() -> String {
         return db.collection("activities").document().documentID
     }
+    func activtiesThisUserIsntIn(userID: String) -> [Activity] {
+        return activities.filter { activity in
+            if (activity.members.contains(userID)) {
+                return false
+            }else {
+                return true
+            }
+        }
+    }
+    func refreshFilteredActivtivties(userID: String) {
+        filteredActivities = activtiesThisUserIsntIn(userID: userID)
+    }
     func findUsersActivties(userID: String) -> [Activity] {
         return activities.filter { activity in
             activity.members.contains(userID)
         }
     }
-    func fetchAcitvity(id : String, table: String) -> Activity? {
-        var ret : Activity?
+    //Takes an activties uid, and the table to search (privateActivities or Activties usually),
+    //and then a function to handle the return value of that Activity.
+    func fetchAcitvity(id : String, table: String, completion:@escaping (Activity) -> Void) {
         let ref = db.collection(table).document(id)
-        print("step1.1")
         ref.getDocument { document, error in
             let result = Result {
               try document?.data(as: Activity.self)
@@ -42,8 +54,7 @@ final class ActivitiesViewModel: ObservableObject {
                   if let activity = activity {
                         // A `activity` value was successfully initialized from the DocumentSnapshot.
                         print("Activity: \(activity)")
-                        print("step1.2")
-                        ret = activity
+                        completion(activity)
                   } else {
                       // A nil value was successfully initialized from the DocumentSnapshot, or the DocumentSnapshot was nil.
                       print("Document does not exist")
@@ -53,7 +64,6 @@ final class ActivitiesViewModel: ObservableObject {
                   print("Error decoding user: \(error)")
               }
         }
-        return ret ?? nil
     }
     func fetchActivties() {
         db.collection("activities").addSnapshotListener {  snapshot, error    in
@@ -63,8 +73,7 @@ final class ActivitiesViewModel: ObservableObject {
             }
             self.activities = activityDocuments.compactMap { activity in
                try? activity.data(as: Activity.self)
-            } ?? []
-            print(self.activities)
+            }
         }
     }
     func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel, cordsOfEvent: Coordinates, isPrivate: Bool, password: String) {

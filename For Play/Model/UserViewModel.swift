@@ -52,11 +52,15 @@ final class UserViewModel: ObservableObject {
     func fetchActivties(avm: ActivitiesViewModel) {
         fetchUser()
         activities = avm.findUsersActivties(userID: uid ?? getUID())
-        for activityID in user!.privateActivities {
-            let activity = avm.fetchAcitvity(id: activityID, table: "privateActivities")
-            print("step 2")
-            if activity != nil {
-                activities.append(activity!)
+        if user != nil {
+            for activityID in user!.privateActivities {
+                avm.fetchAcitvity(id: activityID, table: "privateActivities", completion: { [self] activity in
+                    if activities.contains(activity){
+                        print("Not Adding \(activity.id) as activity is alrady in activties")
+                    } else {
+                        activities.append(activity)
+                    }
+                })
             }
         }
     }
