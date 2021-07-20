@@ -33,8 +33,33 @@ final class ActivitiesViewModel: ObservableObject {
             }
         }
     }
-    func refreshFilteredActivtivties(userID: String) {
+    //todo make this safe:
+//    1° = 111 km (or 60 nautical miles) 0.1° = 11.1 km.
+//
+//    2 Local : 11km * 11km   //eg metro van
+//    1 Regional : 220 * 220 km
+//    0 National : Country = Country
+    func refreshFilteredActivtivties(userID: String, zoom: Int, usersCordinate: Coordinates) {
+        var degress = 0.0
+        if zoom == 0 {
+            degress = 100.0
+        } else if zoom == 1 {
+            degress = 2.0
+        } else if zoom == 2 {
+            degress = 0.15
+        }
         filteredActivities = activtiesThisUserIsntIn(userID: userID)
+        filteredActivities = filteredActivities.filter { activity in
+            var latDiff = activity.coordinates!.latitude - usersCordinate.latitude
+            if latDiff < 0 {latDiff *= -1}
+            var longDiff = activity.coordinates!.longitude - usersCordinate.longitude
+            if longDiff < 0 {longDiff *= -1}
+            print("Activity: \(activity.title) w/ differences of : \(latDiff), \(longDiff) and must " )
+            if (longDiff < degress || latDiff < degress) {
+                return true
+            }
+            return false
+        }
     }
     func findUsersActivties(userID: String) -> [Activity] {
         return activities.filter { activity in
@@ -76,12 +101,12 @@ final class ActivitiesViewModel: ObservableObject {
             }
         }
     }
-    func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel, cordsOfEvent: Coordinates, isPrivate: Bool, password: String) {
+    func postActivity(title: String, authorUID: String, date: Date, user: UserViewModel, cordsOfEvent: Coordinates, isPrivate: Bool, password: String, eventActivity: String, descriptionOfEventLocation: String) {
         //Private Events and Public Events have unqie tables
         var db_table = "activities"
         if isPrivate { db_table = "privateActivities" }
         let ref = db.collection(db_table).document()
-        let activity = Activity(id: ref.documentID, title: title, authorsUID: authorUID, members: [authorUID], date: date, coordinates: cordsOfEvent, password: password)
+        let activity = Activity(id: ref.documentID, title: title, eventActivity: eventActivity, authorsUID: authorUID, members: [authorUID], date: date, descriptionOfEventLocation: descriptionOfEventLocation, coordinates: cordsOfEvent, password: password)
         do {
             try ref.setData(from: activity)
         } catch let error {

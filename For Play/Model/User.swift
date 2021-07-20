@@ -14,6 +14,7 @@ struct User: Hashable, Codable, Identifiable {
     var activities: [String] = []
     var privateActivities: [String] = []
     
+    
     mutating func setId(id: String) {
         self.id = id
     }

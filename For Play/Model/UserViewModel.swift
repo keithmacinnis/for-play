@@ -143,6 +143,19 @@ final class UserViewModel: ObservableObject {
             return CLLocationCoordinate2D()
         }
     }
+    
+    func getLocationCords() -> Coordinates {
+        if let location = whereAmI.lastKnownLocation {
+            print("Your location is \(location)")
+            self.location = location
+            let cords: Coordinates = Coordinates(latitude: location.latitude, longitude: location.longitude)
+            return cords
+        } else {
+            //let cords: Coordinates = Coordinates(latitude: location!.latitude, longitude: location!.longitude)
+            print("Error? GetlocationCords second part called")
+            return Coordinates(latitude: 49.0, longitude: 123.0) //TODO ADD HOME LOCATIOM
+        }
+    }
     func getUID() -> String {
         if self.uid == nil {
             self.uid = Auth.auth().currentUser?.uid

@@ -13,9 +13,11 @@ struct Activity: Hashable, Codable, Identifiable {
     
     var id: String
     var title: String
+    var eventActivity: String  //eg soccer, hockey, cards.
     var authorsUID: String
     var members: [String]
-    var date: Date?
+    var date: Date
+    var descriptionOfEventLocation: String
     var coordinates: Coordinates?
     var password: String?
     
@@ -43,7 +45,8 @@ struct Activity: Hashable, Codable, Identifiable {
         "title": title,
         "authorsUID": authorsUID,
         "members": members,
-        "date": date ?? "",
+        "date": date,
+        "descriptionOfEventLocation": descriptionOfEventLocation,
         "coordinates": coordinates ?? "",
         "password": password ?? ""
       ]
