@@ -210,26 +210,10 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7B42E85F-F79A-4732-8965-2BDBF454E739"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "For Play/Model/Activity.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "Activity"
-            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -242,9 +226,9 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -258,8 +242,8 @@
             filePath = "For Play/Model/UserViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "addActivity(activityID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -274,8 +258,8 @@
             filePath = "For Play/Model/UserViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "addActivity(activityID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -332,7 +316,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B17F4DE3-8877-4BFF-AAD6-F1DAF40C1287"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/Activities/UserViewActivitiesList.swift"
@@ -354,9 +338,25 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "updateActivity(activityUID:userUID:user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D204C39-0443-4964-ACF2-E51C42FAD537"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "For Play/Views/PostActivity/ForPlay_MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "saveCrosshairLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

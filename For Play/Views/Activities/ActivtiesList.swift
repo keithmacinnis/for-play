@@ -9,32 +9,42 @@ import SwiftUI
 import SwiftUIRefresh
 
 struct ActivtiesList: View {
-    @EnvironmentObject var viewModel: ActivitiesViewModel
+    @EnvironmentObject var avm: ActivitiesViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var zoomStepperValue = 3
     @State private var isShowing = false
     let zoomLevels: [String] = ["National","Provincial","Regional","Local"]
-    
+    @State private var isFiltered = false
     var body: some View {
-      //  NavigationView {
-            List {
-                Stepper("", value: $zoomStepperValue, in: 0...3)
-                ForEach(viewModel.activities) { activity in
-                    NavigationLink(destination: ActivityDetail(activity: activity )) {
-                        ActivityRow(currentActivity: activity)
-                    }
+        List {
+            Stepper("", value: $zoomStepperValue, in: 0...3)
+            Toggle("Filter", isOn: $isFiltered)
+                .onChange(of: isFiltered ) { _ in
+                    avm.refreshFilteredActivtivties(userID: userViewModel.getUID())
+            }
+            if !isFiltered {
+            ForEach(avm.activities) { activity in
+                NavigationLink(destination: ActivityDetail(activity: activity )) {
+                    ActivityRow(currentActivity: activity)
                 }
             }
-            .pullToRefresh(isShowing: $isShowing) {
-                viewModel.fetchActivties()
-                self.isShowing = false
+            } else {
+            ForEach(avm.filteredActivities) { activity in
+                NavigationLink(destination: ActivityDetail(activity: activity )) {
+                    ActivityRow(currentActivity: activity)
+                }
             }
-            .navigationTitle("\(zoomLevels[zoomStepperValue]) Activities")
+            }
         }
-   // }
-    struct ActivtiesList_Previews: PreviewProvider {
-        static var previews: some View {
-            ActivtiesList()
+        .pullToRefresh(isShowing: $isShowing) {
+            if !isFiltered {
+                avm.fetchActivties()
+            }
+            else {
+                avm.refreshFilteredActivtivties(userID: userViewModel.getUID())
+            }
+            self.isShowing = false
         }
+        .navigationTitle("\(zoomLevels[zoomStepperValue]) Activities")
     }
 }
-

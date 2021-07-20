@@ -12,10 +12,12 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+//Works with both the firebase Auth and our custom User
 final class UserViewModel: ObservableObject {
     //Store location ni homelocation to make fetching local lazyier
     @Published var loginState: LoginViewState = Auth.auth().currentUser !=  nil ? .showContent : .showLogin
     @Published var activities: [Activity] = []
+    @Published var user: User?
     var db: Firestore
     var uid: String?
     var email: String?
@@ -32,21 +34,57 @@ final class UserViewModel: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth,user) in
             if user != nil {
                 self.loginState = .showContent
+                self.user = User(id: user!.uid)
                 self.configureChatClient()
             } else {
                 print("User is nil (from user.swift)")
                 self.loginState = .showLogin
+                self.user = nil
+                self.cleanupAfterLogout()
             }
         }
         whereAmI.start()
-        
     }
     func configureChatClient() {
         ChatClient.shared.tokenProvider = .development(userId: getUID())
         ChatClient.shared.currentUserController().reloadUserIfNeeded()
     }
     func fetchActivties(avm: ActivitiesViewModel) {
+        fetchUser()
         activities = avm.findUsersActivties(userID: uid ?? getUID())
+        if user != nil {
+            for activityID in user!.privateActivities {
+                avm.fetchAcitvity(id: activityID, table: "privateActivities", completion: { [self] activity in
+                    if activities.contains(activity){
+                        print("Not Adding \(activity.id) as activity is alrady in activties")
+                    } else {
+                        activities.append(activity)
+                    }
+                })
+            }
+        }
+    }
+    func fetchUser() {
+        let ref = db.collection("users").document(getUID())
+        ref.getDocument { document, error in
+            let result = Result {
+              try document?.data(as: User.self)
+            }
+            switch result {
+              case .success(let user):
+                  if let user = user {
+                      // A `User` value was successfully initialized from the DocumentSnapshot.
+                      print("User: \(user)")
+                      self.user = user
+                  } else {
+                      // A nil value was successfully initialized from the DocumentSnapshot, or the DocumentSnapshot was nil.
+                      print("Document does not exist")
+                  }
+              case .failure(let error):
+                  // A `user` value could not be initialized from the DocumentSnapshot.
+                  print("Error decoding user: \(error)")
+              }
+        }
     }
     func addSelf(){
         let uid = getUID()
@@ -62,11 +100,25 @@ final class UserViewModel: ObservableObject {
             "activities": FieldValue.arrayUnion([activityID])
         ])
     }
+    func addPrivateActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "privateActivities": FieldValue.arrayUnion([activityID])
+        ])
+    }
     func removeActivity(activityID: String){
         let uid = getUID()
         let ref = db.collection("users").document(uid)
         ref.updateData([
             "activities": FieldValue.arrayRemove([activityID])
+        ])
+    }
+    func removePrivateActivity(activityID: String){
+        let uid = getUID()
+        let ref = db.collection("users").document(uid)
+        ref.updateData([
+            "privateActivities": FieldValue.arrayRemove([activityID])
         ])
     }
     
@@ -142,5 +194,9 @@ final class UserViewModel: ObservableObject {
                } catch let signOutError as NSError {
                  print ("Error signing out: %@", signOutError)
                }
+    }
+    
+    func cleanupAfterLogout() {
+        print("TODO CLEANUP after logout")
     }
 }

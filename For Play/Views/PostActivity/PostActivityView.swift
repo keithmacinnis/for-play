@@ -21,11 +21,11 @@ struct PostActivityView: View {
     @State private var eventTitle = ""
     @State private var eventPassword = ""
     @State private var eventActivity = ""
-    @State private var eventLocation = "Location/GPS (Click the map's checkmark to set me)"
+    @State private var eventLocation = "Location (Tap CheckMark to Set Location)"
     @State private var hashTags = ""
     @State private var date = Date()
     @State private var isPrivate = false
-    @State private var longDescription: String = "Description"
+    @State private var longDescription: String = "A Long Description (optional)"
     @State private var longDescTapped = false
     @State private var scrollTarget: Int?
     @State private var dateSelected = false
@@ -71,7 +71,7 @@ struct PostActivityView: View {
                         Text("Private")
                             .foregroundColor(Color.black)
                     })
-                    TextField("Event Title", text: self.$eventTitle)
+                    TextField("Event Title (eg. Hockey Tournry 21')", text: self.$eventTitle)
                         .padding()
                         .background(Color.themeTextField)
                         .foregroundColor(.black)
@@ -85,48 +85,55 @@ struct PostActivityView: View {
                         .cornerRadius(25.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
                     }
-                    TextField("Activity", text: self.$eventActivity)
+                    TextField("Activity Type (eg. Road Hockey)", text: self.$eventActivity)
                         .padding()
                         .background(Color.themeTextField)
                         .foregroundColor(.black)
                         .cornerRadius(25.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
                     ForPlay_MapView(region: $region, userTracking: $userTracking, locations: $locations, eventLocation: $eventLocation, cordsOfEvent: $cordsOfEvent)
-                    TextEditor(text: self.$eventLocation)
-                        .frame(height: 48)
-                        .padding()
-                        .background(Color.themeTextField)
-                        .foregroundColor(.black)
-                        .cornerRadius(25.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
-                    TextEditor(text: self.$longDescription)
-                        .id("longDescption")
-                        .frame(height: 192)
-                        .foregroundColor(self.longDescription == "Description" ? .gray : .black)
-                        .background(Color.themeTextField)
-                        .cornerRadius(25.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
-                        .onTapGesture {
-                            if !longDescTapped {
-                                self.longDescription = ""
-                                longDescTapped = true
-                            }
-                            withAnimation {
-                                scrollView.scrollTo("longDescption", anchor: .center)
-                            }
+                    VStack{
+                        Text(eventLocation)
+                            .font(Font.custom("SF Mono Regular", size: 11))
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                        HStack{
+                            Spacer()
+                            Text("Lat: \(cordsOfEvent.latitude)").font(Font.custom("SF Mono Regular", size: 11)).foregroundColor(.black).fontWeight(.bold)
+                            Text("Lon: \(cordsOfEvent.longitude)").font(Font.custom("SF Mono Regular", size: 11)).foregroundColor(.black).fontWeight(.bold)
+                            Spacer()
                         }
-                    TextField("#Hashtags", text: self.$hashTags)
-                        .padding()
-                        .background(Color.themeTextField)
-                        .foregroundColor(.black)
-                        .cornerRadius(25.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
+                    }.frame(alignment: .center)
+//                    TextEditor(text: self.$longDescription)
+//                        .id("longDescption")
+//                        .frame(height: 192)
+//                        .foregroundColor(self.longDescription == "Description" ? .gray : .black)
+//                        .background(Color.themeTextField)
+//                        .cornerRadius(25.0)
+//                        .shadow(radius: 10.0, x: 20, y: 10)
+//                        .onTapGesture {
+//                            if !longDescTapped {
+//                                self.longDescription = ""
+//                                longDescTapped = true
+//                            }
+//                            withAnimation {
+//                                scrollView.scrollTo("longDescption", anchor: .center)
+//                            }
+//                        }
+//
+//                    TextField("#Hashtags (optional)", text: self.$hashTags)
+//                        .padding()
+//                        .background(Color.themeTextField)
+//                        .foregroundColor(.black)
+//                        .cornerRadius(25.0)
+//                        .shadow(radius: 10.0, x: 20, y: 10)
                     
                     
                 }.padding([.leading, .trailing], 50)
                 
                 Button(action: {
-                    if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location/GPS (Click the map's checkmark to set me)"{
+                    if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Tap CheckMark To Save Location"{
                         activeAlert = .postWarning
                     } else {
                         activeAlert = .postSuccess
@@ -164,7 +171,8 @@ struct PostActivityView: View {
         eventTitle = ""
         eventPassword = ""
         eventActivity = ""
-        eventLocation = "Location/GPS (Click the map's checkmark to set me)"
+        eventLocation = "Location (Tap CheckMark to Set Location)"
+        cordsOfEvent = Coordinates(latitude: 0, longitude: 0)
         hashTags = ""
         date = Date()
         isPrivate = false
@@ -176,67 +184,15 @@ struct PostActivityView: View {
         activeAlert = .postWarning
     }
     func postActivity() {
-        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user, cordsOfEvent: self.cordsOfEvent)
+        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user, cordsOfEvent: self.cordsOfEvent, isPrivate: self.isPrivate, password: self.eventPassword)
         clearForm()
         self.parentsTab = .usersPage
     }
     func isActivitySubmitable() {
-        if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location/GPS (Click the map's checkmark to set me)"{
+        if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location (Tap CheckMark to Set Location)" {
             showingAlert = true
         } else {
             showingSuccess = true
         }
     }
-//    func saveCrosshairLocation() {
-//            let newLocation = MKPointAnnotation()
-//            newLocation.coordinate = self.region.center
-//            self.locations.append(newLocation)
-//            let local: CLLocation = CLLocation(latitude: self.region.center.latitude , longitude: self.region.center.longitude)
-//            CLGeocoder().reverseGeocodeLocation(local) { (placemarks, error) in
-//                guard error == nil else {
-//                    print("ReverseGeocode Error: \(String(describing: error))")
-//                    return
-//                }
-//                if let firstPlacemark = placemarks?.first {
-//                    print(firstPlacemark)
-//                    var addressString : String = ""
-//                    if firstPlacemark.name != nil {
-//                        addressString = addressString + firstPlacemark.name! + ", "
-//                    }else {
-//                        if firstPlacemark.subThoroughfare != nil {
-//                            addressString = addressString + firstPlacemark.subThoroughfare! + ", "
-//                        }
-//                        if firstPlacemark.thoroughfare != nil {
-//                            addressString = addressString + firstPlacemark.thoroughfare! + ", "
-//                        }
-//                    }
-//                    if firstPlacemark.subLocality != nil {
-//                        addressString = addressString + firstPlacemark.subLocality! + ", "
-//                    }
-//                    if firstPlacemark.locality != nil {
-//                        addressString = addressString + firstPlacemark.locality! + ", "
-//                    }
-//                    if firstPlacemark.country != nil {
-//                        addressString = addressString + firstPlacemark.country! + ", "
-//                    }
-//                    if firstPlacemark.postalCode != nil {
-//                        addressString = addressString + firstPlacemark.postalCode! + ", "
-//                    }
-//                    if firstPlacemark.region != nil {
-//                        addressString = addressString + "<\(local.coordinate.latitude),\(local.coordinate.longitude)>"
-//                    }
-//                    self.eventLocation = addressString
-//                }
-//            }
-//        }
-//    func zoom() {
-//        let newZoom = 0.08
-//        self.region = MKCoordinateRegion(center: user.getLocation(), span:  MKCoordinateSpan(latitudeDelta: newZoom, longitudeDelta: newZoom))
-//    }
 }
-//
-//struct PostActivityView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostActivityView()
-//    }
-//}
