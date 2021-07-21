@@ -22,12 +22,14 @@ struct UserViewActivityDetail: View {
             Image(systemName: "figure.walk.diamond.fill")
                 .offset(y: -130)
                 .padding(.bottom, -130)
-            Text("Author \(activity.authorsUID)")
-            Text("id \(activity.id)")
+            Text("Activity: \(activity.eventActivity)")
+                .multilineTextAlignment(.center)
+            Text("\(activity.descriptionOfEventLocation)")
+                .multilineTextAlignment(.center)
+            Text("\(activity.date.getFormattedDate(format: "EEEE, MMM d @ HH:mm"))")
+                .multilineTextAlignment(.center)
             Text("Member Count: \(activity.members.count)")
-            List(activity.members, id: \.self) { member in
-                Text(member)
-            }
+
             Group{
             NavigationLink(destination: ChatView(channel: avm.getActivityChatChannel(channelName: activity.id))) {
                 Text("Chat")

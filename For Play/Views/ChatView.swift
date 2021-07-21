@@ -10,22 +10,20 @@ import StreamChat
 
 struct ChatView: View {
     @StateObject var channel: ChatChannelController.ObservableObject
-//    StateObject var channel = ChatClient.shared.channelController(
-//        for: ChannelId(
-//            type: .messaging,
-//            id:  "chan"
-//        )
-//    ).observableObject
     @State var text: String = ""
+    @State var isShowing: Bool = false
     var body: some View {
         VStack {
             List(channel.messages, id: \.self) {
                 MessageView(message: $0)
                     .scaleEffect(x: 1, y: -1, anchor: .center)
             }
+            .pullToRefresh(isShowing: $isShowing) {
+                self.channel.controller.synchronize()
+                self.isShowing = false
+            }
             .scaleEffect(x: 1, y: -1, anchor: .center)
             .offset(x: 0, y: 2)
-            
             HStack {
                 TextField("Type a message", text: $text)
                 Button(action: self.send) {
@@ -36,7 +34,6 @@ struct ChatView: View {
         .navigationBarTitle("G Chat")
         .onAppear(perform: { self.channel.controller.synchronize() })
     }
-
     func send() {
             channel.controller.createNewMessage(text: text) {
                 switch $0 {
@@ -44,15 +41,8 @@ struct ChatView: View {
                     print(response)
                 case .failure(let error):
                     print(error)
-                }
+                    }
             }
-            
             self.text = ""
         }
     }
-//
-//struct ChatView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChatView()
-//    }
-//}

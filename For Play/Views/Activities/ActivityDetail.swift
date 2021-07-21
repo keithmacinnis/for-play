@@ -16,28 +16,20 @@ struct ActivityDetail: View {
 
     var body: some View {
         ScrollView {
-            Text("Title: \(activity.title)")
-                .bold()
-            VStack {
-                Spacer()
-                Map(coordinateRegion: $region, interactionModes: [] )
-                    .frame(height: 300)
-                    .padding(.bottom, -130)
-                Image(systemName: "figure.walk.diamond.fill")
-                    .foregroundColor(Color.blue.opacity(0.75))
-                Spacer()
-            }
-            Group{
-                Text("Author")
-                Text(activity.authorsUID)
-                Text("id")
-                Text(activity.id)
-                Text("members")
-                List(activity.members, id: \.self) { dude in
-                    Text(dude)
-                        .moveDisabled(true)
-                }
-            }
+            Map(coordinateRegion: $region, interactionModes: [] )
+                .frame(height: 300)
+                .ignoresSafeArea(edges: .top)
+            Image(systemName: "figure.walk.diamond.fill")
+                .offset(y: -130)
+                .padding(.bottom, -130)
+            Text("Activity: \(activity.eventActivity)")
+                .multilineTextAlignment(.center)
+            Text("\(activity.descriptionOfEventLocation)")
+                .multilineTextAlignment(.center)
+            Text("\(activity.date.getFormattedDate(format: "EEEE, MMM d @ HH:mm"))")
+                .multilineTextAlignment(.center)
+            Text("Member Count: \(activity.members.count)")
+            
             Button(action: {
                 activityViewModel.updateActivity(activityUID: activity.id, userUID: user.getUID(), user: user)
             })
@@ -54,6 +46,6 @@ struct ActivityDetail: View {
             .onAppear() {
             self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: activity.coordinates!.latitude, longitude: activity.coordinates!.longitude), latitudinalMeters: 420, longitudinalMeters: 420)
             }
-        }
+        }.navigationTitle(activity.title)
     }
 }

@@ -40,6 +40,7 @@ final class ActivitiesViewModel: ObservableObject {
 //    1 Regional : 220 * 220 km
 //    0 National : Country = Country
     func refreshFilteredActivtivties(userID: String, zoom: Int, usersCordinate: Coordinates) {
+        let thisMommentsTimeDate = Date()
         var degress = 0.0
         if zoom == 0 {
             degress = 100.0
@@ -50,6 +51,9 @@ final class ActivitiesViewModel: ObservableObject {
         }
         filteredActivities = activtiesThisUserIsntIn(userID: userID)
         filteredActivities = filteredActivities.filter { activity in
+            if activity.date < thisMommentsTimeDate {
+                return false
+            }
             var latDiff = activity.coordinates!.latitude - usersCordinate.latitude
             if latDiff < 0 {latDiff *= -1}
             var longDiff = activity.coordinates!.longitude - usersCordinate.longitude

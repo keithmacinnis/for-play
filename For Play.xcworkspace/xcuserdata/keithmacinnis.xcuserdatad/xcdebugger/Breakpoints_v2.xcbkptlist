@@ -210,9 +210,9 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:eventActivity:descriptionOfEventLocation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -226,9 +226,9 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:)"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "postActivity(title:authorUID:date:user:cordsOfEvent:isPrivate:password:eventActivity:descriptionOfEventLocation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -316,7 +316,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B17F4DE3-8877-4BFF-AAD6-F1DAF40C1287"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "For Play/Views/Activities/UserViewActivitiesList.swift"
@@ -338,8 +338,8 @@
             filePath = "For Play/Model/ActivtiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "updateActivity(activityUID:userUID:user:)"
             landmarkType = "7">
          </BreakpointContent>

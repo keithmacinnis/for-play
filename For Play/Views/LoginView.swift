@@ -115,10 +115,10 @@ struct LoginView: View {
                 }
             }
         }
-        .background(
+    
+        }    .background(
             LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
-        }
         
     } else {
         ScrollView{
@@ -176,10 +176,11 @@ struct LoginView: View {
                 }
             }
         }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all))
-    }
+        
+                
+    }.background(
+        LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
+            .edgesIgnoringSafeArea(.all))
     }
     }
 }

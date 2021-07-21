@@ -105,38 +105,14 @@ struct PostActivityView: View {
                             Spacer()
                         }
                     }.frame(alignment: .center)
-//                    TextEditor(text: self.$longDescription)
-//                        .id("longDescption")
-//                        .frame(height: 192)
-//                        .foregroundColor(self.longDescription == "Description" ? .gray : .black)
-//                        .background(Color.themeTextField)
-//                        .cornerRadius(25.0)
-//                        .shadow(radius: 10.0, x: 20, y: 10)
-//                        .onTapGesture {
-//                            if !longDescTapped {
-//                                self.longDescription = ""
-//                                longDescTapped = true
-//                            }
-//                            withAnimation {
-//                                scrollView.scrollTo("longDescption", anchor: .center)
-//                            }
-//                        }
-//
-//                    TextField("#Hashtags (optional)", text: self.$hashTags)
-//                        .padding()
-//                        .background(Color.themeTextField)
-//                        .foregroundColor(.black)
-//                        .cornerRadius(25.0)
-//                        .shadow(radius: 10.0, x: 20, y: 10)
-                    
-                    
                 }.padding([.leading, .trailing], 50)
                 
                 Button(action: {
-                    if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Tap CheckMark To Save Location"{
+                    if eventTitle == "" || !dateSelected || eventActivity == "" || eventLocation == "Location (Tap CheckMark to Set Location)" {
                         activeAlert = .postWarning
                     } else {
                         activeAlert = .postSuccess
+                        print("eventlocations : \(eventLocation)")
                     }
                     showingAlert = true
                 })
@@ -184,7 +160,7 @@ struct PostActivityView: View {
         activeAlert = .postWarning
     }
     func postActivity() {
-        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user, cordsOfEvent: self.cordsOfEvent, isPrivate: self.isPrivate, password: self.eventPassword)
+        activityViewModel.postActivity(title: self.eventTitle, authorUID: user.uid ?? user.getUID(), date: self.date , user: user, cordsOfEvent: self.cordsOfEvent, isPrivate: self.isPrivate, password: self.eventPassword, eventActivity: self.eventActivity, descriptionOfEventLocation: self.eventLocation)
         clearForm()
         self.parentsTab = .usersPage
     }
